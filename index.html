@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="திருமண அழைப்பிதழ் ❤️" />
+<meta property="og:description" content="You are invited to our special day. Join us for the celebration!" />
+<meta property="og:image" content="https://raw.githubusercontent.com/arun12334/cards/refs/heads/main/assets/welcome-image.jpg"/>
+<meta property="og:url" content="https://arunaakash-114.github.io/surprise/" />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<meta property="og:type" content="website" />
+
+<title>Gift Box</title>
+<style>
+/* ---- Body & Gift Box ---- */
+body{
+    background:#f8f2e7;
+    text-align:center;
+    font-family:Georgia;
+    margin:0;
+    overflow:hidden;
+}
+
+ 
+/* Gift Box Medium Shaking */
+.gift-img {
+    width: 180px;
+    margin-top: 140px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    animation: shake-medium 0.5s ease-in-out infinite;
+}
+
+/* Medium shake keyframes */
+@keyframes shake-medium {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    10%  { transform: translate(-3px, -2px) rotate(-2deg); }
+    20%  { transform: translate(3px, -2px) rotate(2deg); }
+    30%  { transform: translate(-3px, 2px) rotate(-2deg); }
+    40%  { transform: translate(3px, 2px) rotate(2deg); }
+    50%  { transform: translate(-2px, -1px) rotate(-1deg); }
+    60%  { transform: translate(2px, -1px) rotate(1deg); }
+    70%  { transform: translate(-2px, 1px) rotate(-1deg); }
+    80%  { transform: translate(2px, 1px) rotate(1deg); }
+    90%  { transform: translate(-1px, -1px) rotate(-1deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.gift-img:hover{
+    transform:scale(1.1);
+}
+
+/* Elegant Gift Text */
+.gift-text {
+    font-family: 'Great Vibes', cursive; /* Handwritten cursive font */
+    font-size: 30px;
+    color: #b30000; /* deep red to match gift theme */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* subtle shadow for depth */
+    margin-top: 15px;
+}
+
+
+/* Elegant Glass-Reflection Button */
+.open-btn {
+    margin-top: 20px;
+    padding: 14px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #ff4d4d, #b30000);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Moving Glass Reflection */
+.open-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.2) 0%,
+        rgba(255,255,255,0.6) 50%,
+        rgba(255,255,255,0.2) 100%
+    );
+    transform: rotate(25deg);
+    animation: shine 2.5s linear infinite;
+}
+
+/* Shine Animation */
+@keyframes shine {
+    0% { transform: rotate(25deg) translateX(-100%); }
+    100% { transform: rotate(25deg) translateX(100%); }
+}
+ 
+ 
+
+/* ---- Heart Animation (hidden initially) ---- */
+#heartWrap{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle at top,#0f2027,#090a0f);
+    color:white;
+    overflow:hidden;
+}
+
+/* Stars */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+    from{opacity:.3} to{opacity:1}
+}
+
+/* Moon */
+.moon{
+    position:absolute;
+    top:8%;
+    right:10%;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:radial-gradient(circle,#ffffff,#dcdcdc);
+    box-shadow:0 0 30px rgba(255,255,255,.8);
+    animation:moonGlow 2.5s infinite alternate;
+}
+@keyframes moonGlow{
+    from{box-shadow:0 0 25px rgba(255,255,255,.6);}
+    to{box-shadow:0 0 50px rgba(255,255,255,1);}
+}
+
+/* Heart SVG Container */
+.heart-container{
+    position:absolute;
+    width:360px;
+    height:340px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+svg{
+    width:100%;
+    height:100%;
+}
+#heartFill{
+    fill:#ff0033;
+    stroke:white;
+    stroke-width:4;
+    stroke-linejoin:round;
+    opacity:0;
+    transform:scale(.6);
+    transform-origin:center;
+}
+#heartSketch{
+    fill:none;
+    stroke:white;
+    stroke-width:4;
+    stroke-linejoin:round;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:draw 4s ease forwards;
+}
+.show-fill{
+    animation:fillIn 1.2s ease forwards;
+}
+@keyframes draw{ to{stroke-dashoffset:0} }
+@keyframes fillIn{ to{opacity:1; transform:scale(1);} }
+
+/* Arrow */
+.arrow{
+    position:absolute;
+    width:380px;
+    height:6px;
+    background:#f5c16c;
+    top:50%;
+    left:-450px;
+    opacity:0;
+}
+.arrow::after{
+    content:"";
+    position:absolute;
+    right:-20px;
+    top:-10px;
+    border-left:20px solid #f5c16c;
+    border-top:13px solid transparent;
+    border-bottom:13px solid transparent;
+}
+.shoot{
+    animation:shoot 2s forwards;
+    opacity:1;
+}
+@keyframes shoot{ to{left:-30px;} }
+
+/* Heart Text */
+.heart-text{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    opacity:0;
+}
+.show-text{
+    animation:showText 1s forwards;
+}
+@keyframes showText{ to{opacity:1} }
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎁 Gift Box Section -->
+<img src="assets/gif.png" class="gift-img" id="giftImg">
+<p class="gift-text">Open to see the Surprise</p>
+<button class="open-btn" id="openBtn">Open</button>
+
+
+<!-- 🌟 Heart Animation Section -->
+<div id="heartWrap">
+    <!-- Stars dynamically added by JS -->
+    <div class="moon"></div>
+    <div class="heart-container" id="heartContainer">
+        <div id="arrow" class="arrow"></div>
+        <svg viewBox="0 0 512 512">
+            <path id="heartFill" d="M256 464 C120 360 48 288 48 192 C48 96 160 64 256 160 C352 64 464 96 464 192 C464 288 392 360 256 464"/>
+            <path id="heartSketch" d="M256 464 C120 360 48 288 48 192 C48 96 160 64 256 160 C352 64 464 96 464 192 C464 288 392 360 256 464"/>
+        </svg>
+        
+        <div id="heartText" class="heart-text">
+             💘 Arun  <br>  <br>Uma 💘
+        </div>
+    </div>
+</div>
+
+<script>
+// ⭐ Add Stars
+for(let i=0;i<140;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.top=Math.random()*100+"%";
+    s.style.left=Math.random()*100+"%";
+    s.style.animationDuration=(Math.random()*2+1)+"s";
+    document.body.appendChild(s);
+}
+
+// Elements
+const openBtn = document.getElementById("openBtn");
+const giftImg = document.getElementById("giftImg");
+const giftText = document.querySelector(".gift-text");
+const heartWrap = document.getElementById("heartWrap");
+const heartFill = document.getElementById("heartFill");
+const arrow = document.getElementById("arrow");
+const heartText = document.getElementById("heartText");
+
+// Open Gift Click
+openBtn.onclick = () => {
+    // Hide gift box elements
+    giftImg.style.display = "none";
+    giftText.style.display = "none";
+    openBtn.style.display = "none";
+
+    // Show heart animation
+    heartWrap.style.display = "flex";
+
+    // Play animation sequence with longer delays
+    setTimeout(() => heartFill.classList.add("show-fill"), 800);  // Heart fill after 0.8s
+    setTimeout(() => arrow.classList.add("shoot"), 2000);          // Arrow shoot after 2s
+    setTimeout(() => heartText.classList.add("show-text"), 3200);  // Text appear after 3.2s
+
+    // After total animation, navigate
+    setTimeout(() => {
+        window.location.href = "language.html";
+    }, 5000); // 5s delay for smoother transition
+};
+</script>
+
+</body>
+</html>

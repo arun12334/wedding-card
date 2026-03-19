@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:type" content="website" />
+
+<title>Envlop Box</title>
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#f8f2e7;
+text-align:center;
+font-family:Georgia;
+}
+
+/* ENVELOPE */
+
+.envelope{
+width:260px;
+height:160px;
+background:#d7b88a;
+margin:auto;
+margin-top:280px;
+position:relative;
+border-radius:6px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+overflow:hidden; /* ✅ IMPORTANT */
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+border-left:130px solid transparent;
+border-right:130px solid transparent;
+border-top:90px solid #caa06d;
+transform-origin:top;
+transition:0.6s;
+}
+
+/* 🔥 idle shaking effect */
+@keyframes vibrateMedium {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-2px, 1px); }
+  40%  { transform: translate(2px, -1px); }
+  60%  { transform: translate(-2px, 1px); }
+  80%  { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.envelope {
+  animation: vibrateMedium 0.25s infinite;
+}
+.envelope.open:before{
+transform:rotateX(180deg);
+transform-origin:top;
+transition:0.6s;
+}
+
+ 
+
+.open-btn{
+margin-top:40px;
+font-size:18px;
+padding:10px 25px;
+}
+
+
+.seal{
+position:absolute;
+top:45px;
+left:50%;
+transform:translateX(-50%) rotate(-45deg);
+width:50px;
+height:50px;
+background:#8b0000;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* heart circles */
+.seal::before,
+.seal::after{
+content:"";
+position:absolute;
+width:50px;
+height:50px;
+background:#8b0000;
+border-radius:50%;
+}
+
+.seal::before{
+top:-25px;
+left:0;
+}
+
+.seal::after{
+left:25px;
+top:0;
+}
+
+/* fix text rotation */
+.seal span{
+transform:rotate(45deg);
+color:#fff;
+font-weight:bold;
+font-size:16px;
+letter-spacing:2px;
+z-index:2;
+}
+
+.envelope.open .letter{
+bottom:20px; /* ✅ comes out */
+}
+
+.envelope:before{
+z-index:2;
+}
+
+.seal{
+z-index:3;
+}
+
+.letter{
+position:absolute;
+bottom:-120px; /* ✅ hide inside */
+left:50%;
+transform:translateX(-50%);
+width:90%;
+height:120px;
+background:#fff;
+border-radius:4px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+z-index:0;
+transition:0.8s ease;
+}
+
+.seal-round{
+width:50px;
+height:50px;
+background:#8b0000;
+border-radius:50%;
+position:absolute;
+top:45px;
+left:50%;
+transform:translateX(-50%);
+z-index:3;
+transition:0.4s;
+}
+
+.envelope.open .seal-round{
+opacity:0;
+transform:translateX(-50%) scale(0.5);
+}
+
+
+.heart-seal{
+position:absolute;
+top:30px;
+left:50%;
+transform:translateX(-50%) rotate(-45deg) scale(0);
+width:40px;
+height:40px;
+background:#8b0000;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:0.6s ease 0.5s; /* delay */
+}
+
+/* heart shape */
+.heart-seal::before,
+.heart-seal::after{
+content:"";
+position:absolute;
+width:40px;
+height:40px;
+background:#8b0000;
+border-radius:50%;
+}
+
+.heart-seal::before{
+top:-20px;
+left:0;
+}
+
+.heart-seal::after{
+left:20px;
+top:0;
+}
+
+.heart-seal::before,
+.heart-seal::after{
+z-index:1; /* behind text */
+}
+
+.heart-seal{
+z-index:2;
+}
+
+.heart-seal span{
+transform:rotate(45deg);
+color:#fff;
+font-weight:bold;
+font-size:16px;
+letter-spacing:2px;
+position:relative;
+z-index:5; /* ✅ VERY IMPORTANT */
+}
+
+/* show heart after open */
+.envelope.open .heart-seal{
+transform:translateX(-50%) rotate(-45deg) scale(1);
+}
+</style>
+
+</head>
+
+<body>
+
+    <div style="position:absolute; top:20px; right:20px;">
+  <button class="btn btn-sm btn-outline-dark" onclick="setLang('en')">EN</button>
+  <button class="btn btn-sm btn-outline-danger" onclick="setLang('ta')">தமிழ்</button>
+</div>
+
+<div class="envelope">
+
+  <!-- Letter -->
+  <div class="letter">
+    <div class="heart-seal">
+      <span id="logo">AU</span>
+    </div>
+  </div>
+
+  <!-- Initial round seal -->
+  <div class="seal-round"></div>
+
+</div>
+<button class="btn btn-dark open-btn" onclick="openLetter()"  id="title">Open Me</button>
+
+<script>
+  let lang = localStorage.getItem("lang") || "en";
+
+  function setLang(selectedLang){
+  localStorage.setItem("lang", selectedLang);
+  location.reload();
+}
+
+
+
+function loadLanguage(){
+
+  if(lang === "ta"){
+    document.getElementById("title").innerText = "தொடரவும்";
+    document.getElementById("logo").innerText = "A~U";
+  }
+  else{
+    document.getElementById("title").innerText = "Open Me";
+    document.getElementById("logo").innerText = "A~U";
+
+  }
+
+}
+
+loadLanguage();
+
+function openLetter(){
+  const envelope = document.querySelector('.envelope');
+ envelope.style.animation = "none"; 
+
+
+  envelope.classList.add('open');
+
+  // wait for full animation (flap + letter + heart)
+  setTimeout(()=>{
+    window.location.href="invite-card.html";
+  },1800);
+}
+</script>
+
+</body>
+</html>

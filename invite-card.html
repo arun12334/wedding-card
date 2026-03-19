@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vijay Weds Dhanushree</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* Default text */
+body{
+margin:0;
+font-family:'Poppins', sans-serif;
+background:#f8f2e7;
+}
+
+/* Elegant headings (like screenshot) */
+.script-font{
+font-family:'Great Vibes', cursive;
+color:#e9737a;
+letter-spacing:1px;
+}
+
+/* Hero */
+.hero h1{
+/*font-family:'Great Vibes', cursive;*/
+font-size:42px;
+}
+
+.hero h2{
+font-family:'Great Vibes', cursive;
+font-size:60px;
+color:#fff;
+}
+
+/* Guest Section Title */
+.guest h2{
+font-family:'Great Vibes', cursive;
+font-size:45px;
+color:#fff;
+}
+
+ 
+
+
+/* Footer */
+.footer h3{
+font-family:'Great Vibes', cursive;
+font-size:40px;
+color:#e9737a;
+}
+/* HERO */
+.hero{
+height:100vh;
+background:url('assets/olai.jpeg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero h2{
+font-family:cursive;
+font-size:50px;
+}
+.hero h6{
+font-family:cursive;
+font-size:20px;
+}
+
+/* COUNTDOWN SECTION */
+.count-section{
+background:#e9737a;
+color:#fff;
+padding:60px 20px;
+text-align:center;
+}
+
+.timer-box{
+border:1px solid rgba(255,255,255,0.5);
+padding:5px;
+margin:10px;
+}
+
+.timer-number{
+font-size:30px;
+font-weight:bold;
+}
+
+/* EVENTS */
+.event{
+padding:50px 20px;
+}
+
+.event-card{
+background:#fff;
+padding:25px;
+margin:20px 0;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+text-align:left;
+}
+
+.event-card h4{
+color:#e9737a;
+}
+
+/* GUEST */
+.guest{
+background:#e9737a;
+color:#fff;
+padding:50px;
+text-align:center;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+padding:40px;
+}
+
+.section {
+    padding: 50px 20px;
+}
+
+/* COUPLE IMAGES */
+.couple img{
+width:100%;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* HEART WITH RING */
+.ring-heart{
+width:70px;
+height:70px;
+background:#e9737a;
+position:relative;
+transform:rotate(-45deg);
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:22px;
+margin:auto;
+}
+
+.ring-heart::before,
+.ring-heart::after{
+content:"";
+position:absolute;
+width:70px;
+height:70px;
+background:#e9737a;
+border-radius:50%;
+}
+
+.ring-heart::before{
+top:-35px;
+left:0;
+}
+
+.ring-heart::after{
+left:35px;
+top:0;
+}
+
+.ring-heart{
+z-index:1;
+}
+
+.ring-heart{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.ring-heart::before,
+.ring-heart::after{
+z-index:-1;
+}
+
+/* FIX TEXT ROTATION */
+.ring-heart{
+transform:rotate(-45deg);
+}
+
+.ring-heart::after,
+.ring-heart::before{
+transform:rotate(0);
+}
+
+.ring-heart{
+display:flex;
+}
+
+.ring-heart span{
+transform:rotate(45deg);
+}
+
+
+/* COIN CONTAINER */
+.coin-box{
+perspective:1000px;
+width:260px;
+margin:auto;
+}
+
+/* COIN */
+.coin{
+width:260px;
+height:320px;
+position:relative;
+transform-style:preserve-3d;
+transition:transform 1s;
+}
+
+/* FRONT & BACK */
+.coin .front,
+.coin .back{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.coin img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* BACK SIDE */
+.coin .back{
+transform:rotateY(180deg);
+}
+
+/* FLIP CLASS */
+.coin.flip{
+transform:rotateY(180deg);
+}
+
+
+    .welcome-box {
+
+      
+      padding: 30px 50px;
+      border-radius: 15px;
+    
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .welcome-box i {
+      font-size: 40px;
+      color: #4facfe;
+      margin-bottom: 15px;
+    }
+
+
+    .welcome-text {
+ 
+
+       font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .welcome-box:hover {
+      transform: scale(1.05);
+      transition: 0.3s;
+    }
+
+ /* EXTRA SMALL MOBILE (320px devices) */
+/* MOBILE FIX (≤ 400px) */
+@media(max-width:400px){
+
+/* center full row */
+.couple .row{
+display:flex !important;
+flex-wrap:nowrap !important;
+justify-content:center !important;
+align-items:center;
+margin:0 auto;
+}
+
+/* fix column width */
+.couple .col-md-5{
+flex:0 0 35% !important;
+max-width:35% !important;
+text-align:center;
+}
+
+.couple .col-md-2{
+flex:0 0 20% !important;
+max-width:20% !important;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* reduce coin size */
+.coin-box{
+width:90px;
+}
+
+.coin{
+width:90px;
+height:110px;
+}
+
+/* image inside coin */
+.coin img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* names */
+.couple h5{
+font-size:11px;
+margin-top:5px;
+}
+
+/* heart smaller */
+.ring-heart{
+width:40px;
+height:40px;
+font-size:14px;
+}
+
+/* heart shape fix */
+.ring-heart::before,
+.ring-heart::after{
+width:40px;
+height:40px;
+}
+
+.ring-heart::before{
+top:-20px;
+}
+
+.ring-heart::after{
+left:20px;
+}
+
+
+
+}
+
+
+/* Desktop first */
+.welcome-box .hand-icon {
+  width: 180px;
+  animation: bounce 1.5s infinite;
+  box-shadow: none;
+}
+
+/* MOBILE FIX */
+@media (max-width: 400px) {
+  .welcome-box .hand-icon {
+    width: 70px;
+  }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.welcome-box {
+  text-align: center;
+}
+
+
+/* CARD */
+.event-card {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* POPUP BACKGROUND */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* POPUP CARD */
+.popup-content {
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  animation: zoomIn 0.3s ease;
+}
+
+/* IMAGE */
+.popup-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* MOBILE */
+@media (max-width: 400px) {
+  .popup-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .popup-content h3 {
+    font-size: 16px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .popup-content {
+    max-width: 450px;
+  }
+}
+
+.map-btn {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  background: #28a745;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.map-btn:hover {
+  background: #218838;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background: #c82333;
+}
+
+
+.queen  {
+  width: 100px;
+  height: 100px;
+}
+
+
+.kavithai {
+  font-style: italic;
+  border-left: 3px solid #caa06d;
+  border-right: 3px solid #caa06d;
+  letter-spacing: 0.5px;
+    line-height: 1.8;
+    color: #5a3e1b;
+      padding: 10px 20px;
+}
+
+/* highlight feel (optional) */
+.kavithai {
+  text-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+
+/* Initially hidden */
+/* Initially hidden */
+.slide-hidden{
+  opacity:0;
+  transform:translateY(150px); /* from bottom */
+}
+
+/* Animation class */
+.slide-in{
+  animation:slideInUp 1s ease forwards;
+}
+
+/* Keyframes */
+@keyframes slideInUp{
+  0%{
+    opacity:0;
+    transform:translateY(150px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-content">
+<h2  id="groomName">Arun Kumar M</h2>
+ <h1 class="mt-4"> 
+🤍</h1> <h2 id="brideName"> Uma Bharathi R</h2>
+<p id="tagline">WE’RE GETTING MARRIED</p>
+<h2 id="saveDate">Save Our Date</h2>
+<h4 id="eventDate">29 May 2026</h4>
+<h6 id="eventTime">6.00 AM</h6>
+<img 
+  src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-minimalist-bride-and-groom-icon-set-for-wedding-designs-png-image_15806739.png" 
+  alt="Welcome Hand" 
+  class="queen slide-hidden" 
+  id="heroImg">
+
+</div>
+</div>
+
+
+<div class="container section couple">
+<div class="row">
+<div class="col-md-5 text-center">
+
+<div class="coin-box">
+  <div class="coin" id="coin1">
+    <div class="front">
+      <img src="assets/vestie.jpeg">
+    </div>
+    <div class="back">
+      <img src="assets/suits.jpeg">
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-4 text-center" id="groomName2">Arun Kumar M</h5>
+
+</div>
+
+<div class="col-md-2 d-flex align-items-center justify-content-center">
+  <div class="ring-heart"></div>
+</div>
+
+<div class="col-md-5 text-center">
+
+<div class="coin-box">
+  <div class="coin" id="coin2">
+    <div class="front">
+      <img src="assets/saree.jpeg">
+    </div>
+    <div class="back">
+      <img src="assets/shudi.jpeg">
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-4 text-center" id="brideName2">Uma Bharathi R</h5>
+
+</div>
+</div>
+
+<div class="kavithai mt-3">
+  இரு இதயங்கள் ஒன்று சேரும் இனிய தருணம்,<br>
+  இரு குடும்பங்கள் இணையும் மகிழ்ச்சி நேரம்.<br><br>
+
+  அன்பும், நம்பிக்கையும் இணையும் இந்த நாளில், சுற்றமும் நட்பும் சூழ,<br>
+  எங்கள் திருமண விழாவிற்கு உங்களை அன்புடன் வரவேற்கிறோம்.
+</div>
+
+  <div class="welcome-box">
+   <img src="https://clipart-library.com/2023/Welcome-hand-Clipart.png" alt="Welcome Hand" class="hand-icon">
+    <div class="welcome-text mt-3" id="welcomeText">Welcome TO ALL</div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="count-section">
+
+  <div style="position:fixed; top:20px; right:20px; z-index:999;">
+  <button onclick="setLang('en')" class="btn btn-light btn-sm">EN</button>
+  <button onclick="setLang('ta')" class="btn btn-danger btn-sm">தமிழ்</button>
+</div>
+
+<h2 id="countTitle1">We Are Waiting For...</h2>
+<h1 id="countTitle2">The Big Day</h1>
+
+<div class="container">
+<div class="row justify-content-center">
+
+<div class="col-3 timer-box">
+<div id="days" class="timer-number">00</div>
+<p>Days</p>
+</div>
+
+<div class="col-3 timer-box">
+<div id="hours" class="timer-number">00</div>
+<p>Hours</p>
+</div>
+
+<div class="col-3 timer-box">
+<div id="mins" class="timer-number">00</div>
+<p>Minutes</p>
+</div>
+
+<div class="col-3 timer-box">
+<div id="secs" class="timer-number">00</div>
+<p>Seconds</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- EVENTS -->
+<div class="container event">
+
+<h2 class="text-center mb-4" id="eventTitle">Wedding Events</h2>
+
+<!-- WEDDING -->
+<div class="event-card">
+  <h4 id="weddingTitle">Wedding Ceremony</h4>
+  <p id="weddingTime">29 May 2026, 6:00 AM</p>
+  <p id="weddingPlace">48GP+65G, Bala Murugan Kovil St, Kumarnathapuram, New Bus Stand Near, Tiruppur 641602</p>
+  <button id="viewBtn1" class="btn btn-danger" onclick="openPopup()">View Details</button>
+</div>
+
+<!-- POPUP MODAL -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+
+   <button class="close-btn" onclick="closePopup()">Close</button>
+
+    <img src="assets/wedding.jpg">
+
+ 
+
+        <!-- MAP BUTTON -->
+    <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9" target="_blank" class="map-btn">
+      📍 Open in Google Maps
+    </a>
+
+  </div>
+</div>
+
+<!-- RECEPTION -->
+<div class="event-card">
+<h4 id="receptionTitle">Reception</h4>
+<p id="receptionTime">31 May 2026, 10:00 AM</p>
+<p id="receptionPlace">Arutperunjyothi SSK Vijayalakshmi Mahal Nagalnagar, Dindigul – 624003</p>
+<button id="viewBtn2" class="btn btn-danger" onclick="openPopup2()">View Details</button>
+</div>
+
+
+<!-- POPUP MODAL -->
+<div id="popup2" class="popup">
+  <div class="popup-content">
+
+   <button class="close-btn" onclick="closePopup2()">Close</button>
+
+   
+    <img src="assets/reciption.jpg">
+
+  
+  <a href="https://maps.app.goo.gl/jppHiSqB9x1GjDJr5" target="_blank" class="map-btn">
+      📍 Open in Google Maps
+    </a>
+  </div>
+</div>
+
+</div>
+
+<!-- GUEST -->
+<div class="guest">
+<h2 id="guestTitle">Be Our Guest</h2>
+<p id="guestText">"Welcome to the beginning of a beautiful forever!
+We are delighted to have you join us as we celebrate the union of Vijay and Dhanushree. Your presence today brings joy and love to this special occasion."</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<h3 id="footerText">Thank You</h3>
+<p id="footerSub">Awaiting your presence...</p>
+</div>
+
+<script>
+
+  let lang = localStorage.getItem("lang") || "en";
+
+// MAIN COUNTDOWN (Wedding)
+const countDate = new Date("May 29, 2026 06:00:00").getTime();
+
+setInterval(() => {
+
+let now = new Date().getTime();
+let gap = countDate - now;
+
+let d = Math.floor(gap / (1000*60*60*24));
+let h = Math.floor((gap % (1000*60*60*24)) / (1000*60*60));
+let m = Math.floor((gap % (1000*60*60)) / (1000*60));
+let s = Math.floor((gap % (1000*60)) / 1000);
+
+document.getElementById("days").innerText = d;
+document.getElementById("hours").innerText = h;
+document.getElementById("mins").innerText = m;
+document.getElementById("secs").innerText = s;
+
+},1000);
+
+</script>
+
+<script>
+
+  function setText(id, value){
+  let el = document.getElementById(id);
+  if(el){
+    el.innerText = value;
+  }
+}
+
+  function setLang(lang){
+  localStorage.setItem("lang", lang);
+  location.reload();
+}
+
+setInterval(()=>{
+document.getElementById("coin1").classList.toggle("flip");
+document.getElementById("coin2").classList.toggle("flip");
+},2000);
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("heroImg").classList.add("slide-in");
+  }, 1000);
+});
+
+
+function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function openPopup2() {
+  document.getElementById("popup2").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function closePopup2() {
+  document.getElementById("popup2").style.display = "none";
+}
+
+/* close when clicking outside */
+window.onclick = function(e) {
+  const popup1 = document.getElementById("popup");
+  const popup2 = document.getElementById("popup2");
+
+  if (e.target === popup1) {
+    popup1.style.display = "none";
+  }
+
+  if (e.target === popup2) {
+    popup2.style.display = "none";
+  }
+};
+
+
+function applyLanguage(){
+
+  let lang = localStorage.getItem("lang") || "en";
+
+  if(lang === "ta"){
+
+    document.getElementById("groomName").innerText = "அருண் குமார் M";
+    document.getElementById("groomName2").innerText = "அருண் குமார் M";
+
+    document.getElementById("brideName").innerText = "உமா பாரதி R";
+    document.getElementById("brideName2").innerText = "உமா பாரதி R";
+
+
+
+    document.getElementById("tagline").innerText = "திருமண அழைப்பிதழ்";
+    document.getElementById("saveDate").innerText = "திருமண தேதி";
+    document.getElementById("eventDate").innerText = "29 மே 2026";
+    document.getElementById("eventTime").innerText = "காலை 6:00 AM";
+
+
+
+    document.getElementById("eventTitle").innerText = "திருமண நிகழ்வுகள்";
+
+    document.getElementById("weddingTitle").innerText = "திருமண விழா";
+    document.getElementById("weddingTime").innerText = "29 மே 2026, காலை 6:00 மணிக்கு";
+    document.getElementById("weddingPlace").innerText = "48GP+65G, பால முருகன் கோவில் செயின்ட், குமார்நாதபுரம், புதிய பேருந்து நிலையம் அருகில், திருப்பூர் 641602";
+
+    document.getElementById("receptionTitle").innerText = "வரவேற்பு விழா";
+    document.getElementById("receptionTime").innerText = "31 மே 2026, காலை 10:00 மணிக்கு";
+    document.getElementById("receptionPlace").innerText = "அருட்பெருஞ்ஜோதி எஸ்.எஸ்.கே.விஜயலட்சுமி மஹால் நாகல்நகர், திண்டுக்கல் - 624003";
+
+    document.getElementById("viewBtn1").innerText = "மேலும் விவரங்கள்";
+    document.getElementById("viewBtn2").innerText = "மேலும் விவரங்கள்";
+
+    document.getElementById("guestTitle").innerText = "அன்புடன் வரவேற்கிறோம் 🙏";
+    document.getElementById("guestText").innerText ="இரு மனங்கள் இணையும் எங்கள் திருமண விழாவிற்கு நண்பர்களாகிய உங்களையும் உங்கள் குடும்பத்தினரையும் , உறவினர்களையும் எங்கள் இல்ல விழாவில் இணைந்து எங்களை வாழ்த்த இரு வீட்டாரின் சார்பாக அன்புடன் வரவேற்கிறோம். 🙏💖";
+
+    document.getElementById("footerText").innerText = "நன்றி";
+    document.getElementById("footerSub").innerText = "உங்கள் வருகையை எதிர்நோக்குகிறோம்";
+
+    document.getElementById("countTitle1").innerText = "இன்னும் சில ";
+    document.getElementById("countTitle2").innerText = "தினங்களில்";
+
+    document.getElementById("welcomeText").innerText = "அனைவரையும் அன்புடன் வரவேற்கிறோம்";
+
+  } else {
+
+    document.getElementById("groomName").innerText = "Arun Kumar M";
+    document.getElementById("brideName").innerText = "Uma Bharathi R";
+
+    document.getElementById("tagline").innerText = "WE’RE GETTING MARRIED";
+    document.getElementById("saveDate").innerText = "Save Our Date";
+
+    document.getElementById("eventTitle").innerText = "Wedding Events";
+
+    document.getElementById("weddingTitle").innerText = "Wedding Ceremony";
+    document.getElementById("weddingTime").innerText = "29 May 2026, 6:00 AM";
+    document.getElementById("weddingPlace").innerText = "48GP+65G, Bala Murugan Kovil St, Kumarnathapuram, New Bus Stand Near, Tiruppur 641602";
+
+    document.getElementById("receptionTitle").innerText = "Reception";
+    document.getElementById("receptionTime").innerText = "31 May 2026, 10:00 AM";
+    document.getElementById("receptionPlace").innerText = "Arutperunjyothi SSK Vijayalakshmi Mahal Nagalnagar, Dindigul – 624003";
+
+    document.getElementById("viewBtn1").innerText = "View Details";
+    document.getElementById("viewBtn2").innerText = "View Details";
+
+    document.getElementById("guestTitle").innerText = "Be Our Guest";
+    document.getElementById("guestText").innerText =
+      "WELCOME TO THE BEGINNING OF A BEAUTIFUL FOREVER! We are delighted to have you join us as we celebrate the union of Arun and Uma. Your presence today brings joy and love to this special occasion.We are happy to share this moment with our dear friends, family, and relatives, whose love and blessings make this day even more meaningful.";
+
+    document.getElementById("footerText").innerText = "Thank You";
+    document.getElementById("footerSub").innerText = "Awaiting your presence...";
+
+    document.getElementById("countTitle1").innerText = "We Are Waiting For...";
+    document.getElementById("countTitle2").innerText = "The Big Day";
+
+    document.getElementById("welcomeText").innerText = "Welcome TO ALL";
+  }
+}
+
+applyLanguage();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>வரவேற்பு</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* Default (Mobile First) */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#f8f2e7,#fce3d4);
+  font-family: 'Georgia', serif;
+  padding:15px;
+}
+
+.container-box{
+  width:100%;
+  max-width:350px;
+  background:#ffffff;
+  padding:25px 20px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  text-align:center;
+  animation:fadeIn 1s ease;
+}
+
+/* Title */
+.container-box h3{
+  margin-bottom:15px;
+  font-weight:bold;
+  color:#b33c3c;
+  font-size:20px;
+}
+
+/* Subtitle */
+.subtitle{
+  font-size:13px;
+  color:#666;
+}
+
+/* Input */
+.form-control{
+  border-radius:25px;
+  padding:10px;
+  margin-top:10px;
+}
+
+/* Button */
+.btn-danger{
+  border-radius:25px;
+  padding:10px;
+  font-size:14px;
+  margin-top:15px;
+}
+
+/* ========================= */
+/* 🖥️ Desktop View */
+/* ========================= */
+@media (min-width: 768px){
+
+  body{
+    background: linear-gradient(135deg,#fce3d4,#f8f2e7);
+  }
+
+  .container-box{
+    max-width:600px;
+    padding:40px;
+    border-radius:20px;
+  }
+
+  .container-box h3{
+    font-size:28px;
+  }
+
+  .subtitle{
+    font-size:16px;
+    margin-bottom:15px;
+  }
+
+  .form-control{
+    padding:14px;
+    font-size:16px;
+  }
+
+  .btn-danger{
+    padding:14px;
+    font-size:16px;
+  }
+
+}
+
+
+#gifOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+background: url('https://i.pinimg.com/originals/52/02/dd/5202ddbf0549a42006093edb3084555f.gif') center center / contain no-repeat;
+background-color: #000; /* optional for better look */
+  z-index:9999;
+  visibility:hidden;
+  opacity:0;
+  transition:0.3s;
+}
+
+#gifOverlay.show{
+  visibility:visible;
+  opacity:1;
+}
+</style>
+</head>
+
+<body>
+
+  <div style="position:absolute; top:20px; right:20px;">
+  <button class="btn btn-sm btn-outline-dark" onclick="setLang('en')">EN</button>
+  <button class="btn btn-sm btn-outline-danger" onclick="setLang('ta')">தமிழ்</button>
+</div>
+
+
+<div id="gifOverlay"></div>
+  <div class="container-box">
+
+
+
+<h3 id="title"></h3>
+<p class="subtitle" id="subtitle"></p>
+
+<input type="text" id="username" class="form-control">
+
+<button class="btn btn-danger w-100 mt-3" onclick="goInvite()" id="btnText"></button>
+
+  </div>
+ 
+
+<script>
+function goInvite(){
+  let name = document.getElementById("username").value;
+
+  if(name.trim() === ""){
+    alert("தயவு செய்து உங்கள் பெயரை உள்ளிடவும்");
+    return;
+  }
+
+  localStorage.setItem("inviteName", name);
+
+  // Show GIF
+  let overlay = document.getElementById("gifOverlay");
+  overlay.classList.add("show");
+
+  // Wait 3 seconds then navigate
+  setTimeout(() => {
+    window.location.href = "letter.html";
+     // ✅ STORE interaction
+  localStorage.setItem("musicAllowed", "true");
+  }, 1000);
+}
+
+function setLang(selectedLang){
+  localStorage.setItem("lang", selectedLang);
+  location.reload();
+}
+</script>
+
+
+
+<script>
+let lang = localStorage.getItem("lang") || "en";
+
+function loadLanguage(){
+
+  if(lang === "ta"){
+    document.getElementById("title").innerText = "🙏 வணக்கம்";
+    document.getElementById("subtitle").innerText = "உங்களை அன்புடன் வரவேற்கிறோம் ❤️";
+    document.getElementById("username").placeholder = "உங்கள் பெயரை உள்ளிடவும்";
+    document.getElementById("btnText").innerText = "அழைப்பிதழை காண ->";
+  }
+  else{
+    document.getElementById("title").innerText = "🙏 Welcome";
+    document.getElementById("subtitle").innerText = "We are happy to invite you ❤️";
+    document.getElementById("username").placeholder = "Enter your name";
+    document.getElementById("btnText").innerText = "View Invitation ->";
+  }
+
+}
+
+loadLanguage();
+</script>
+
+</body>
+</html>
