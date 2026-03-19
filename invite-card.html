@@ -28,9 +28,9 @@ letter-spacing:1px;
 }
 
 /* Hero */
-.hero h1{
+.hero .head{
 /*font-family:'Great Vibes', cursive;*/
-font-size:42px;
+font-size:35px;
 }
 
 .hero h2{
@@ -585,11 +585,11 @@ left:20px;
 <!-- HERO -->
 <div class="hero">
 <div class="hero-content">
-<h2  id="groomName">Arun Kumar M</h2>
+<h2  id="groomName" class="head">Arun Kumar M</h2>
  <h1 class="mt-4"> 
-🤍</h1> <h2 id="brideName"> Uma Bharathi R</h2>
+🤍</h1> <h2 id="brideName" class="head"> Uma Bharathi R</h2>
 <p id="tagline">WE’RE GETTING MARRIED</p>
-<h2 id="saveDate">Save Our Date</h2>
+<h2 id="saveDate" class="head">Save Our Date</h2>
 <h4 id="eventDate">29 May 2026</h4>
 <h6 id="eventTime">6.00 AM</h6>
 <img 
@@ -617,7 +617,7 @@ left:20px;
   </div>
 </div>
 
-<h5 class="mt-4 text-center" id="groomName2">Arun Kumar M</h5>
+<h5 class="mt-4 text-center" id="groomName2" style="font-size: 26px;">Arun Kumar M</h5>
 
 </div>
 
@@ -638,7 +638,7 @@ left:20px;
   </div>
 </div>
 
-<h5 class="mt-4 text-center" id="brideName2">Uma Bharathi R</h5>
+<h5 class="mt-4 text-center" id="brideName2" style="font-size: 26px;">Uma Bharathi R</h5>
 
 </div>
 </div>
@@ -669,22 +669,22 @@ left:20px;
 
 <div class="col-3 timer-box">
 <div id="days" class="timer-number">00</div>
-<p>Days</p>
+<p id="day">Days</p>
 </div>
 
 <div class="col-3 timer-box">
 <div id="hours" class="timer-number">00</div>
-<p>Hours</p>
+<p id="Hours">Hours</p>
 </div>
 
 <div class="col-3 timer-box">
 <div id="mins" class="timer-number">00</div>
-<p>Minutes</p>
+<p id="Minutes">Minutes</p>
 </div>
 
 <div class="col-3 timer-box">
 <div id="secs" class="timer-number">00</div>
-<p>Seconds</p>
+<p id="Seconds">Seconds</p>
 </div>
 
 </div>
@@ -752,7 +752,7 @@ left:20px;
 
 <!-- GUEST -->
 <div class="guest">
-<h2 id="guestTitle">Be Our Guest</h2>
+<h2 id="guestTitle" style="font-size: 32px;">Be Our Guest</h2>
 <p id="guestText">"Welcome to the beginning of a beautiful forever!
 We are delighted to have you join us as we celebrate the union of Vijay and Dhanushree. Your presence today brings joy and love to this special occasion."</p>
 </div>
@@ -878,6 +878,14 @@ function applyLanguage(){
     document.getElementById("receptionPlace").innerText = "அருட்பெருஞ்ஜோதி எஸ்.எஸ்.கே.விஜயலட்சுமி மஹால் நாகல்நகர், திண்டுக்கல் - 624003";
 
     document.getElementById("viewBtn1").innerText = "மேலும் விவரங்கள்";
+    document.getElementById("day").innerText = "நாள்கள்";
+    document.getElementById("Hours").innerText = "மணிகள்";
+    document.getElementById("Minutes").innerText = "நிமிடங்கள்";
+    document.getElementById("Seconds").innerText = "நொடிகள்";
+
+
+
+
     document.getElementById("viewBtn2").innerText = "மேலும் விவரங்கள்";
 
     document.getElementById("guestTitle").innerText = "அன்புடன் வரவேற்கிறோம் 🙏";
