@@ -159,18 +159,34 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
 /* HEART WITH RING */
 .ring-heart{
-width:70px;
-height:70px;
-background:#e9737a;
-position:relative;
-transform:rotate(-45deg);
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-size:22px;
-margin:auto;
+  width:70px;
+  height:70px;
+  background:#e9737a;
+  position:relative;
+  transform:rotate(-45deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:22px;
+  margin:auto;
+  z-index:1;
+
+  /* ❤️ heartbeat */
+  animation: heartBeat 1.2s infinite;
+  transform-origin:center;
 }
+
+/* ❤️ KEYFRAMES (IMPORTANT: keep rotate) */
+@keyframes heartBeat {
+  0%   { transform: rotate(-45deg) scale(1); }
+  15%  { transform: rotate(-45deg) scale(1.25); }
+  30%  { transform: rotate(-45deg) scale(1); }
+  45%  { transform: rotate(-45deg) scale(1.25); }
+  70%  { transform: rotate(-45deg) scale(1); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+
 
 .ring-heart::before,
 .ring-heart::after{
@@ -569,6 +585,9 @@ left:20px;
     transform:translateY(0);
   }
 }
+
+
+ 
 </style>
 
 
@@ -586,7 +605,7 @@ left:20px;
 <div class="hero">
 <div class="hero-content">
 <h2  id="groomName" class="head">Arun Kumar M</h2>
- <h1 class="mt-4"> 
+ <h1 class="mt-4 heart"> 
 🤍</h1> <h2 id="brideName" class="head"> Uma Bharathi R</h2>
 <p id="tagline">WE’RE GETTING MARRIED</p>
 <h2 id="saveDate" class="head">Save Our Date</h2>
@@ -622,7 +641,7 @@ left:20px;
 </div>
 
 <div class="col-md-2 d-flex align-items-center justify-content-center">
-  <div class="ring-heart"></div>
+  <div class="ring-heart "></div>
 </div>
 
 <div class="col-md-5 text-center">
@@ -717,7 +736,7 @@ left:20px;
 
         <!-- MAP BUTTON -->
     <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9" target="_blank" class="map-btn">
-      📍 Open in Google Maps
+      📍 Location in Google Maps
     </a>
 
   </div>
@@ -743,7 +762,7 @@ left:20px;
 
   
   <a href="https://maps.app.goo.gl/jppHiSqB9x1GjDJr5" target="_blank" class="map-btn">
-      📍 Open in Google Maps
+      📍 Location in Google Maps
     </a>
   </div>
 </div>
@@ -757,10 +776,20 @@ left:20px;
 We are delighted to have you join us as we celebrate the union of Vijay and Dhanushree. Your presence today brings joy and love to this special occasion."</p>
 </div>
 
+<div class="section text-center">
+  <h2 class="script-font" id="bless">With Blessings Of</h2>
+
+  <p id="appa" class="mb-0 mt-3"> Mr. P. Mani 🤍 Mrs. M. Kavitha
+     </p>  <br>
+  <p id="amma" class="mb-0">  Mr. M. Ramesh 🤍 Mrs. Muthu Parvathi
+  </p>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
 <h3 id="footerText">Thank You</h3>
 <p id="footerSub">Awaiting your presence...</p>
+
 </div>
 
 <script>
@@ -861,7 +890,7 @@ function applyLanguage(){
 
 
     document.getElementById("tagline").innerText = "திருமண அழைப்பிதழ்";
-    document.getElementById("saveDate").innerText = "திருமண தேதி";
+    document.getElementById("saveDate").innerText = "திருமண நாள்";
     document.getElementById("eventDate").innerText = "29 மே 2026";
     document.getElementById("eventTime").innerText = "காலை 6:00 மணிக்கு";
 
@@ -882,6 +911,14 @@ function applyLanguage(){
     document.getElementById("Hours").innerText = "மணிகள்";
     document.getElementById("Minutes").innerText = "நிமிடங்கள்";
     document.getElementById("Seconds").innerText = "நொடிகள்";
+    document.getElementById("Seconds").innerText = "நொடிகள்";
+    document.getElementById("bless").innerText = "பெற்றோர்கள் ஆசிர்வாதத்துடன் 🙌";
+    
+
+    document.getElementById("appa").innerText = "திரு. P.மணி 🤍 திருமதி. M.கவிதா";
+
+    document.getElementById("amma").innerText = "திரு. M. ரமேஷ் 🤍 திருமதி. முத்து பார்வதி ";
+
 
 
 
