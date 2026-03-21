@@ -99,7 +99,7 @@ color:#e9737a;
 .hero{
 height:100vh;
 /* 💎 royal purple gradient */
-background: radial-gradient(circle at top, #4b2c5e, #2a0f3f 70%);
+background: radial-gradient(circle at top, #8454a1, #2a0f3f 70%);
 
 /* subtle texture effect */
 background-blend-mode: overlay;
@@ -582,18 +582,79 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 /* ✨ SINGLE STAR */
 .star{
   position:absolute;
-  width:3px;
-  height:3px;
+  width:4px;
+  height:4px;
   background:#ffd700;
   border-radius:50%;
   opacity:0;
-  animation: twinkle 2s infinite;
+  animation: twinkle 1.5s infinite;
+  box-shadow: 0 0 10px #ffd700;
 }
 
 /* ✨ BLINK ANIMATION */
 @keyframes twinkle{
   0%,100%{ opacity:0; transform:scale(0.5); }
   50%{ opacity:1; transform:scale(1.5); }
+}
+
+/* MAIN CONTAINER */
+#introCard{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:9999;
+  background:#0b1d2a;
+  overflow:hidden;
+}
+
+/* DOORS */
+.door{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  transition: transform 2s ease;
+}
+
+/* LEFT DOOR */
+.left-door{
+  left:0;
+  transform-origin:left;
+}
+
+/* RIGHT DOOR */
+.right-door{
+  right:0;
+  transform-origin:right;
+}
+
+/* OPEN EFFECT */
+.open .left-door{
+  transform:rotateY(-100deg);
+}
+
+.open .right-door{
+  transform:rotateY(100deg);
+}
+
+/* TEXT CENTER */
+.card-text{
+  position:absolute;
+  width:100%;
+  top:50%;
+  transform:translateY(-50%);
+  text-align:center;
+  color:gold;
+  z-index:10;
+}
+
+.card-text h2{
+  font-size:30px;
+font-family:'Poppins', sans-serif;
+  
 }
  
 </style>
@@ -602,6 +663,18 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 </head>
 
 <body>
+
+<div id="introCard">
+  <div class="door left-door"></div>
+  <div class="door right-door"></div>
+
+  <div class="card-text">
+    <h2 id="door">Arun ❤️ Uma</h2>
+    <p id="door-card">Opening Invitation...</p>
+  </div>
+</div>
+
+
  <div style="position:fixed; top:20px; right:20px; z-index:999;">
   <button onclick="setLang('en')" class="btn btn-light btn-sm">EN</button>
   <button onclick="setLang('ta')" class="btn btn-danger btn-sm">தமிழ்</button>
@@ -855,6 +928,17 @@ document.getElementById("mins").innerText = m;
 </script>
 
 <script>
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+    document.getElementById("introCard").classList.add("open");
+  }, 1500); // wait before opening
+
+  setTimeout(() => {
+    document.getElementById("introCard").style.display = "none";
+  }, 3500); // remove after open
+
+});
 
   function setText(id, value){
   let el = document.getElementById(id);
@@ -942,6 +1026,11 @@ if(lang === "ta"){
 
     document.getElementById("groomName").innerText = "அருண் குமார் M";
     document.getElementById("groomName2").innerText = "அருண் குமார் M";
+    document.getElementById("door").innerText = "அருண் ❤️ உமா ";
+    document.getElementById("door-card").innerText = "திருமண அழைப்பிதழ் ";
+
+
+    
 
     document.getElementById("map-1").innerText = " 📍 இடத்தை வரைபடத்தில் பார்க்க";
     document.getElementById("map-2").innerText = " 📍 இடத்தை வரைபடத்தில் பார்க்க";
