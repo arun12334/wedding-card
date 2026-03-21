@@ -168,134 +168,9 @@ border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* HEART WITH RING */
-.ring-heart{
-  width:70px;
-  height:70px;
-  background:#e9737a;
-  position:relative;
-  transform:rotate(-45deg);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:22px;
-  margin:auto;
-  z-index:1;
+ 
 
-  /* ❤️ heartbeat */
-  animation: heartBeat 1.2s infinite;
-  transform-origin:center;
-}
-
-/* ❤️ KEYFRAMES (IMPORTANT: keep rotate) */
-@keyframes heartBeat {
-  0%   { transform: rotate(-45deg) scale(1); }
-  15%  { transform: rotate(-45deg) scale(1.25); }
-  30%  { transform: rotate(-45deg) scale(1); }
-  45%  { transform: rotate(-45deg) scale(1.25); }
-  70%  { transform: rotate(-45deg) scale(1); }
-  100% { transform: rotate(-45deg) scale(1); }
-}
-
-
-.ring-heart::before,
-.ring-heart::after{
-content:"";
-position:absolute;
-width:70px;
-height:70px;
-background:#e9737a;
-border-radius:50%;
-}
-
-.ring-heart::before{
-top:-35px;
-left:0;
-}
-
-.ring-heart::after{
-left:35px;
-top:0;
-}
-
-.ring-heart{
-z-index:1;
-}
-
-.ring-heart{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.ring-heart::before,
-.ring-heart::after{
-z-index:-1;
-}
-
-/* FIX TEXT ROTATION */
-.ring-heart{
-transform:rotate(-45deg);
-}
-
-.ring-heart::after,
-.ring-heart::before{
-transform:rotate(0);
-}
-
-.ring-heart{
-display:flex;
-}
-
-.ring-heart span{
-transform:rotate(45deg);
-}
-
-
-/* COIN CONTAINER */
-.coin-box{
-perspective:1000px;
-width:260px;
-margin:auto;
-}
-
-/* COIN */
-.coin{
-width:260px;
-height:320px;
-position:relative;
-transform-style:preserve-3d;
-transition:transform 1s;
-}
-
-/* FRONT & BACK */
-.coin .front,
-.coin .back{
-position:absolute;
-width:100%;
-height:100%;
-backface-visibility:hidden;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.coin img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* BACK SIDE */
-.coin .back{
-transform:rotateY(180deg);
-}
-
-/* FLIP CLASS */
-.coin.flip{
-transform:rotateY(180deg);
-}
+ 
 
 
     .welcome-box {
@@ -340,82 +215,6 @@ transform:rotateY(180deg);
       transition: 0.3s;
     }
 
- /* EXTRA SMALL MOBILE (320px devices) */
-/* MOBILE FIX (≤ 400px) */
-@media(max-width:400px){
-
-/* center full row */
-.couple .row{
-display:flex !important;
-flex-wrap:nowrap !important;
-justify-content:center !important;
-align-items:center;
-margin:0 auto;
-}
-
-/* fix column width */
-.couple .col-md-5{
-flex:0 0 35% !important;
-max-width:35% !important;
-text-align:center;
-}
-
-.couple .col-md-2{
-flex:0 0 20% !important;
-max-width:20% !important;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-/* reduce coin size */
-.coin-box{
-width:90px;
-}
-
-.coin{
-width:90px;
-height:110px;
-}
-
-/* image inside coin */
-.coin img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* names */
-.couple h5{
-font-size:11px;
-margin-top:5px;
-}
-
-/* heart smaller */
-.ring-heart{
-width:40px;
-height:40px;
-font-size:14px;
-}
-
-/* heart shape fix */
-.ring-heart::before,
-.ring-heart::after{
-width:40px;
-height:40px;
-}
-
-.ring-heart::before{
-top:-20px;
-}
-
-.ring-heart::after{
-left:20px;
-}
-
-
-
-}
 
 
 /* Desktop first */
@@ -597,7 +396,127 @@ left:20px;
   }
 }
 
+/* FORCE HORIZONTAL */
+ 
 
+/* COIN BOX */
+.coin-box{
+  perspective:1000px;
+  width:200px;
+  margin:auto;
+}
+
+/* COIN */
+.coin{
+  width:200px;
+  height:260px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform 1s;
+}
+
+/* FRONT & BACK */
+.coin .front,
+.coin .back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+.coin img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* BACK SIDE */
+.coin .back{
+  transform:rotateY(180deg);
+}
+
+/* FLIP */
+.coin.flip{
+  transform:rotateY(180deg);
+}
+
+/* HEART */
+.ring-heart{
+  width:60px;
+  height:60px;
+  background:#e9737a;
+  position:relative;
+  transform:rotate(-45deg);
+  margin:auto;
+}
+
+/* HEART SHAPE */
+.ring-heart::before,
+.ring-heart::after{
+  content:"";
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:#e9737a;
+  border-radius:50%;
+}
+
+.ring-heart::before{
+  top:-30px;
+  left:0;
+}
+
+.ring-heart::after{
+  left:30px;
+  top:0;
+}
+
+/* HEARTBEAT */
+@keyframes beat{
+  0%{ transform:rotate(-45deg) scale(1);}
+  50%{ transform:rotate(-45deg) scale(1.2);}
+  100%{ transform:rotate(-45deg) scale(1);}
+}
+
+.ring-heart{
+  animation:beat 1s infinite;
+}
+
+/* MOBILE FIX */
+@media(max-width:600px){
+
+  .coin-box{
+    width:100px;
+  }
+
+  .coin{
+    width:100px;
+    height:130px;
+  }
+
+  .ring-heart{
+    width:40px;
+    height:40px;
+  }
+
+  .ring-heart::before,
+  .ring-heart::after{
+    width:40px;
+    height:40px;
+  }
+
+  .ring-heart::before{
+    top:-20px;
+  }
+
+  .ring-heart::after{
+    left:20px;
+  }
+}
  
 </style>
 
@@ -632,46 +551,60 @@ left:20px;
 </div>
 
 
+
+ 
+<div class="container mt-5">
+<div class="row justify-content-center align-items-center text-center">
+
+  <!-- Groom -->
+  <div class="col-5 col-md-5 text-center">
+
+    <div class="coin-box">
+      <div class="coin" id="coin1">
+        <div class="front">
+          <img src="assets/vestie.jpeg">
+        </div>
+        <div class="back">
+          <img src="assets/suits.jpeg">
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3" style="font-size:14px">Arun Kumar M</h5>
+
+  </div>
+
+  <!-- Heart -->
+  <div class="col-2 col-md-2 text-center">
+    <div class="ring-heart"></div>
+  </div> 
+
+  <!-- Bride -->
+  <div class="col-5 col-md-5 text-center">
+
+    <div class="coin-box">
+      <div class="coin" id="coin2">
+        <div class="front">
+          <img src="assets/saree.jpeg">
+        </div>
+        <div class="back">
+          <img src="assets/shudi.jpeg">
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-3" style="font-size:14px">Uma Bharathi R</h5>
+
+  </div>
+
+</div>
+
+</div>
+
+
+
 <div class="container section couple">
-<div class="row">
-<div class="col-md-5 text-center">
 
-<div class="coin-box">
-  <div class="coin" id="coin1">
-    <div class="front">
-      <img src="assets/vestie.jpeg">
-    </div>
-    <div class="back">
-      <img src="assets/suits.jpeg">
-    </div>
-  </div>
-</div>
-
-<h5 class="mt-4 text-center" id="groomName2" style="font-size: 12px;">Arun Kumar M</h5>
-
-</div>
-
-<div class="col-md-2 d-flex align-items-center justify-content-center">
-  <div class="ring-heart "></div>
-</div>
-
-<div class="col-md-5 text-center">
-
-<div class="coin-box">
-  <div class="coin" id="coin2">
-    <div class="front">
-      <img src="assets/saree.jpeg">
-    </div>
-    <div class="back">
-      <img src="assets/shudi.jpeg">
-    </div>
-  </div>
-</div>
-
-<h5 class="mt-4 text-center" id="brideName2" style="font-size: 12px;">Uma Bharathi R</h5>
-
-</div>
-</div>
 
 <div class="kavithai mt-3">
   இரு இதயங்கள் ஒன்று சேரும் இனிய தருணம்,<br>
