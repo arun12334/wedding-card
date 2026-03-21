@@ -666,6 +666,8 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
   <p id="weddingTime">29 May 2026, 6:00 AM</p>
   <p id="weddingPlace">48GP+65G, Bala Murugan Kovil St, Kumarnathapuram, New Bus Stand Near, Tiruppur 641602</p>
   <button id="viewBtn1" class="btn btn-danger" onclick="openPopup()">View Details</button>
+  <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9" id="map-wed-btn" target="_blank" class="btn btn-primary " >📌 Google Map</a>
+
 </div>
 
 <!-- POPUP MODAL -->
@@ -683,6 +685,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
       📍 Location in Google Maps
     </a>
 
+
   </div>
 </div>
 
@@ -692,6 +695,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 <p id="receptionTime">31 May 2026, 10:00 AM</p>
 <p id="receptionPlace">Arutperunjyothi SSK Vijayalakshmi Mahal Nagalnagar, Dindigul – 624003</p>
 <button id="viewBtn2" class="btn btn-danger" onclick="openPopup2()">View Details</button>
+  <a href="https://maps.app.goo.gl/rfLAMrxNv8asjsGP8" id="map-re-btn" target="_blank" class="btn btn-primary" >📌 Google Map</a>
 </div>
 
 
@@ -705,7 +709,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
     <img id="popupImg2" src="assets/reciption.jpeg">
 
   
-  <a href="https://maps.app.goo.gl/jppHiSqB9x1GjDJr5" id="map-2" target="_blank" class="map-btn">
+  <a href="https://maps.app.goo.gl/rfLAMrxNv8asjsGP8" id="map-2" target="_blank" class="map-btn">
       📍 Location in Google Maps
     </a>
   </div>
@@ -740,6 +744,19 @@ We are delighted to have you join us as we celebrate the union of Vijay and Dhan
 <script>
 
   let lang = localStorage.getItem("lang") || "en";
+
+  let btn1 = document.getElementById("map-wed-btn");
+let btn2 = document.getElementById("map-re-btn");
+
+[btn1, btn2].forEach(btn => {
+  if(btn){
+    if(lang === "ta"){
+      btn.classList.add("mt-2");
+    } else {
+      btn.classList.remove("mt-2");
+    }
+  }
+});
 
 // MAIN COUNTDOWN (Wedding)
 const countDate = new Date("May 29, 2026 06:00:00").getTime();
@@ -839,6 +856,10 @@ function applyLanguage(){
 
     document.getElementById("brideName").innerText = "உமா பாரதி R";
     document.getElementById("brideName2").innerText = "உமா பாரதி R";
+
+    document.getElementById("map-re-btn").innerText = "📍 இடத்தை பார்க்க";
+    document.getElementById("map-wed-btn").innerText = "📍 இடத்தை பார்க்க";
+
 
 
 
