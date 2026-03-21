@@ -674,12 +674,12 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
    <button class="close-btn" onclick="closePopup()">Close</button>
 
-    <img src="assets/wedding.jpeg">
+    <img  id="popupImg1" src="assets/wedding.jpeg">
 
  
 
         <!-- MAP BUTTON -->
-    <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9" target="_blank" class="map-btn">
+    <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9" id="map-1" target="_blank" class="map-btn">
       📍 Location in Google Maps
     </a>
 
@@ -702,10 +702,10 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
    <button class="close-btn" onclick="closePopup2()">Close</button>
 
    
-    <img src="assets/reciption.jpeg">
+    <img id="popupImg2" src="assets/reciption.jpeg">
 
   
-  <a href="https://maps.app.goo.gl/jppHiSqB9x1GjDJr5" target="_blank" class="map-btn">
+  <a href="https://maps.app.goo.gl/jppHiSqB9x1GjDJr5" id="map-2" target="_blank" class="map-btn">
       📍 Location in Google Maps
     </a>
   </div>
@@ -826,8 +826,16 @@ function applyLanguage(){
 
   if(lang === "ta"){
 
+     // 👉 Tamil images
+    document.getElementById("popupImg1").src = "assets/tamil-wedding.jpeg";
+    document.getElementById("popupImg2").src = "assets/tamil-reciption.jpeg";
+
     document.getElementById("groomName").innerText = "அருண் குமார் M";
     document.getElementById("groomName2").innerText = "அருண் குமார் M";
+
+    document.getElementById("map-1").innerText = " 📍 இடம் பார்க்க";
+    document.getElementById("map-2").innerText = " 📍 இடம் பார்க்க";
+
 
     document.getElementById("brideName").innerText = "உமா பாரதி R";
     document.getElementById("brideName2").innerText = "உமா பாரதி R";
@@ -882,6 +890,10 @@ function applyLanguage(){
     document.getElementById("welcomeText").innerText = "அனைவரையும் அன்புடன் வரவேற்கிறோம்";
 
   } else {
+
+     // 👉 English images
+    document.getElementById("popupImg1").src = "assets/wedding.jpeg";
+    document.getElementById("popupImg2").src = "assets/reciption.jpeg";
 
     document.getElementById("groomName").innerText = "Arun Kumar M";
     document.getElementById("brideName").innerText = "Uma Bharathi R";
