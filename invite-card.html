@@ -510,6 +510,11 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
   border-radius:50%;
 }
 
+/* Tamil smaller size */
+.tamil-font{
+  font-size:40px !important;
+}
+
 .ring-heart::before{
   top:-30px;
   left:0;
@@ -618,7 +623,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 <img 
   src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-minimalist-bride-and-groom-icon-set-for-wedding-designs-png-image_15806739.png" 
   alt="Welcome Hand" 
-  class="queen slide-hidden" 
+  class="queen slide-hidden mt-3" 
   id="heroImg">
 
 </div>
@@ -910,7 +915,29 @@ window.onclick = function(e) {
 
 function applyLanguage(){
 
+
+
   let lang = localStorage.getItem("lang") || "en";
+
+const groom = document.getElementById("groomName");
+const bride = document.getElementById("brideName");
+const save = document.getElementById("saveDate");
+
+
+if(lang === "ta"){
+  groom.classList.add("tamil-font");
+  bride.classList.add("tamil-font");
+  saveDate.classList.add("tamil-font");
+
+}else{
+  groom.classList.remove("tamil-font");
+  bride.classList.remove("tamil-font");
+  saveDate.classList.remove("tamil-font");
+
+}
+
+
+
 
   if(lang === "ta"){
 
