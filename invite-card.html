@@ -36,20 +36,49 @@ letter-spacing:1px;
 font-size:35px;
 }
 
-.hero h2{
-font-family:'Great Vibes', cursive;
-font-size:60px;
-color:#fff;
+ 
+
+.hero p{
+font-size:14px;
+letter-spacing:3px;
 }
 
-/* Guest Section Title */
 .guest h2{
 font-family:'Great Vibes', cursive;
 font-size:45px;
 color:#fff;
 }
 
- 
+ .gold-text{
+  background: linear-gradient(
+    120deg,
+    #d4af37 0%,
+    #fff2b0 20%,
+    #caa85c 40%,
+    #fff2b0 60%,
+    #d4af37 80%
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: goldShine 3s linear infinite;
+
+  text-shadow:
+    0 0 8px rgba(212,175,55,0.5),
+    0 0 15px rgba(212,175,55,0.3);
+}
+
+@keyframes goldShine{
+  0%{
+    background-position: 0% center;
+  }
+  100%{
+    background-position: 200% center;
+  }
+}
 
 
 /* Footer */
@@ -69,13 +98,29 @@ color:#e9737a;
 /* HERO */
 .hero{
 height:100vh;
-background:url('assets/olai.jpeg') center/cover no-repeat;
+/* 💎 royal purple gradient */
+background: radial-gradient(circle at top, #4b2c5e, #2a0f3f 70%);
+
+/* subtle texture effect */
+background-blend-mode: overlay;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:#fff;
 position:relative;
+}
+
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:
+  radial-gradient(circle at 20% 30%, rgba(255,215,0,0.08), transparent 40%),
+  radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08), transparent 40%);
+pointer-events:none;
 }
 
 .hero::after{
@@ -85,7 +130,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.4);
+background:rgba(10,0,30,0.6);
 }
 
 .hero-content{
@@ -517,6 +562,34 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
     left:20px;
   }
 }
+
+/* 🌟 STAR CONTAINER */
+.stars{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ✨ SINGLE STAR */
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:#ffd700;
+  border-radius:50%;
+  opacity:0;
+  animation: twinkle 2s infinite;
+}
+
+/* ✨ BLINK ANIMATION */
+@keyframes twinkle{
+  0%,100%{ opacity:0; transform:scale(0.5); }
+  50%{ opacity:1; transform:scale(1.5); }
+}
  
 </style>
 
@@ -533,14 +606,15 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
 <!-- HERO -->
 <div class="hero">
+  <div class="stars"></div>
 <div class="hero-content">
-<h2  id="groomName" class="head">Arun Kumar M</h2>
- <h1 class="mt-4 heart"> 
-&</h1> <h2 id="brideName" class="head"> Uma Bharathi R</h2>
-<p id="tagline">WE’RE GETTING MARRIED</p>
-<h2 id="saveDate" class="head">Save Our Date</h2>
-<h4 id="eventDate">29 May 2026</h4>
-<h6 id="eventTime">6.00 AM</h6>
+<h2  id="groomName" class=" gold-text">Arun Kumar M</h2>
+ <h1 class="mt-4 gold-text"> 
+&</h1> <h2 id="brideName" class="gold-text"> Uma Bharathi R</h2>
+<p id="tagline" class="gold-text">WE’RE GETTING MARRIED</p>
+<h2 id="saveDate" class="gold-text">Save Our Date</h2>
+<h4 id="eventDate" class="gold-text">29 May 2026</h4>
+<h6 id="eventTime" class="gold-text">6.00 AM</h6>
 <img 
   src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-minimalist-bride-and-groom-icon-set-for-wedding-designs-png-image_15806739.png" 
   alt="Welcome Hand" 
@@ -951,6 +1025,23 @@ function applyLanguage(){
 
 applyLanguage();
 
+
+
+</script>
+
+<script>
+const starContainer = document.querySelector(".stars");
+
+for(let i=0; i<40; i++){
+  const star = document.createElement("div");
+  star.classList.add("star");
+
+  star.style.top = Math.random()*100 + "%";
+  star.style.left = Math.random()*100 + "%";
+  star.style.animationDelay = Math.random()*3 + "s";
+
+  starContainer.appendChild(star);
+}
 </script>
 
 </body>
