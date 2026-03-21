@@ -417,20 +417,21 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 
+ 
 /* Initially hidden */
 /* Initially hidden */
 .slide-hidden{
   opacity:0;
-  transform:translateY(150px); /* from bottom */
+  transform:translateY(150px);
 }
 
-/* Animation class */
+/* ENTRY ANIMATION */
 .slide-in{
-  animation:slideInUp 1s ease forwards;
+  animation: slideUp 1s ease forwards, floatUpDown 3s ease-in-out infinite 1s;
 }
 
-/* Keyframes */
-@keyframes slideInUp{
+/* SLIDE UP */
+@keyframes slideUp{
   0%{
     opacity:0;
     transform:translateY(150px);
@@ -439,6 +440,13 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
     opacity:1;
     transform:translateY(0);
   }
+}
+
+/* FLOATING EFFECT */
+@keyframes floatUpDown{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-15px); }
+  100%{ transform: translateY(0); }
 }
 
 /* FORCE HORIZONTAL */
@@ -654,7 +662,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 .card-text h2{
   font-size:30px;
 font-family:'Poppins', sans-serif;
-  
+
 }
  
 </style>
@@ -930,13 +938,20 @@ document.getElementById("mins").innerText = m;
 <script>
 window.addEventListener("load", () => {
 
+  // DOOR OPEN
   setTimeout(() => {
     document.getElementById("introCard").classList.add("open");
-  }, 1500); // wait before opening
+  }, 1500);
 
+  // REMOVE INTRO
   setTimeout(() => {
     document.getElementById("introCard").style.display = "none";
-  }, 3500); // remove after open
+  }, 3500);
+
+  // 👉 IMAGE ANIMATION AFTER DOOR OPEN
+  setTimeout(() => {
+    document.getElementById("heroImg").classList.add("slide-in");
+  }, 3700);
 
 });
 
@@ -957,12 +972,7 @@ document.getElementById("coin1").classList.toggle("flip");
 document.getElementById("coin2").classList.toggle("flip");
 },2000);
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("heroImg").classList.add("slide-in");
-  }, 1000);
-});
-
+ 
 
 function openPopup() {
   document.getElementById("popup").style.display = "flex";
