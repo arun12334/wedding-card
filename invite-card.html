@@ -845,12 +845,10 @@ let gap = countDate - now;
 let d = Math.floor(gap / (1000*60*60*24));
 let h = Math.floor((gap % (1000*60*60*24)) / (1000*60*60));
 let m = Math.floor((gap % (1000*60*60)) / (1000*60));
-let s = Math.floor((gap % (1000*60)) / 1000);
 
 document.getElementById("days").innerText = d;
 document.getElementById("hours").innerText = h;
 document.getElementById("mins").innerText = m;
-document.getElementById("secs").innerText = s;
 
 },1000);
 
@@ -923,19 +921,16 @@ const groom = document.getElementById("groomName");
 const bride = document.getElementById("brideName");
 const save = document.getElementById("saveDate");
 
-
 if(lang === "ta"){
-  groom.classList.add("tamil-font");
-  bride.classList.add("tamil-font");
-  saveDate.classList.add("tamil-font");
+  groom && groom.classList.add("tamil-font");
+  bride && bride.classList.add("tamil-font");
+  save && save.classList.add("tamil-font");
 
 }else{
-  groom.classList.remove("tamil-font");
-  bride.classList.remove("tamil-font");
-  saveDate.classList.remove("tamil-font");
-
+  groom && groom.classList.remove("tamil-font");
+  bride && bride.classList.remove("tamil-font");
+  save && save.classList.remove("tamil-font");
 }
-
 
 
 
@@ -982,8 +977,6 @@ if(lang === "ta"){
     document.getElementById("day").innerText = "நாள்கள்";
     document.getElementById("Hours").innerText = "மணிகள்";
     document.getElementById("Minutes").innerText = "நிமிடங்கள்";
-    document.getElementById("Seconds").innerText = "நொடிகள்";
-    document.getElementById("Seconds").innerText = "நொடிகள்";
     document.getElementById("bless").innerText = "பெற்றோர்கள் ஆசிர்வாதத்துடன் 🙌";
     
 
