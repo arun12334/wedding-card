@@ -664,7 +664,77 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 font-family:'Poppins', sans-serif;
 
 }
+
  
+
+ /* HEART CONTAINER */
+.hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:5;
+
+}
+
+ 
+.heart{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:#ff4d6d;
+  transform:rotate(-45deg);
+  opacity:0.9;
+  box-shadow:0 0 10px rgba(255,77,109,0.6);
+}
+
+/* HEART SHAPE */
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:#ff4d6d;
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-6px;
+  left:0;
+}
+
+.heart::after{
+  left:6px;
+  top:0;
+}
+
+/* FLOAT ANIMATION */
+/*@keyframes floatUp{
+  0%{
+    transform:translateY(0) scale(0.3) rotate(-45deg);
+    opacity:0;
+  }
+  30%{ opacity:1; }
+  100%{
+    transform:translateY(-110vh) scale(1) rotate(-45deg);
+    opacity:0;
+  }
+}*/
+
+@keyframes fallDown{
+  0%{
+    transform:translateY(-20vh) scale(0.3) rotate(-45deg);
+    opacity:0;
+  }
+  30%{ opacity:1; }
+  100%{
+    transform:translateY(110vh) scale(1.2) rotate(-45deg);
+    opacity:0;
+  }
+}
 </style>
 
 
@@ -672,10 +742,14 @@ font-family:'Poppins', sans-serif;
 
 <body>
 
+  <audio id="popupMusic" src="assets/music.mp3"></audio>
+
 <div id="introCard">
+  <div class="hearts"></div>
   <div class="door left-door"></div>
   <div class="door right-door"></div>
 
+ 
   <div class="card-text">
     <h2 id="door">Arun 💍 Uma</h2>
     <p id="door-card">Opening Invitation...</p>
@@ -936,6 +1010,42 @@ document.getElementById("mins").innerText = m;
 </script>
 
 <script>
+
+
+
+const heartContainer = document.querySelector(".hearts");
+
+for(let i=0; i<80; i++){   // 🔥 more hearts
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+
+  heart.style.left = Math.random()*100 + "%";
+
+  let size = 8 + Math.random()*10;
+  heart.style.width = size + "px";
+  heart.style.height = size + "px";
+
+  let duration = 4 + Math.random()*3;
+
+  // 👉 RANDOM DIRECTION
+  if(Math.random() > 0.5){
+    // 🔼 bottom → top
+    heart.style.bottom = "-20px";
+    heart.style.animation = `floatUp ${duration}s linear infinite`;
+  } else {
+    // 🔽 top → bottom
+    heart.style.top = "-20px";
+    heart.style.animation = `fallDown ${duration}s linear infinite`;
+  }
+
+  heartContainer.appendChild(heart);
+}
+
+
+
+
+
+
 window.addEventListener("load", () => {
 
   // DOOR OPEN
@@ -952,6 +1062,11 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("heroImg").classList.add("slide-in");
   }, 3700);
+
+  // hide after door opens
+setTimeout(() => {
+  document.querySelector(".hearts").style.display = "none";
+}, 3500);
 
 });
 
@@ -974,22 +1089,31 @@ document.getElementById("coin2").classList.toggle("flip");
 
  
 
+const music = document.getElementById("popupMusic");
+
 function openPopup() {
   document.getElementById("popup").style.display = "flex";
+
+  music.currentTime = 0; // start from beginning
+  music.play();
 }
 
 function openPopup2() {
   document.getElementById("popup2").style.display = "flex";
+
+  music.currentTime = 0;
+  music.play();
 }
 
 function closePopup() {
   document.getElementById("popup").style.display = "none";
+  music.pause(); // stop music
 }
 
 function closePopup2() {
   document.getElementById("popup2").style.display = "none";
+  music.pause();
 }
-
 /* close when clicking outside */
 window.onclick = function(e) {
   const popup1 = document.getElementById("popup");
