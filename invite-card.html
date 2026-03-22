@@ -615,6 +615,8 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
   z-index:9999;
   background:#0b1d2a;
   overflow:hidden;
+    /* ✅ ADD THIS */
+  perspective: 1200px;
 }
 
 /* DOORS */
@@ -625,6 +627,11 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
   height:100%;
   background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   transition: transform 2s ease;
+
+    /* ✅ ADD THESE */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* LEFT DOOR */
@@ -641,11 +648,11 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
 /* OPEN EFFECT */
 .open .left-door{
-  transform:rotateY(-100deg);
+  transform:rotateY(-120deg);
 }
 
 .open .right-door{
-  transform:rotateY(100deg);
+  transform:rotateY(120deg);
 }
 
 /* TEXT CENTER */
@@ -1048,25 +1055,33 @@ for(let i=0; i<80; i++){   // 🔥 more hearts
 
 window.addEventListener("load", () => {
 
-  // DOOR OPEN
-  setTimeout(() => {
-    document.getElementById("introCard").classList.add("open");
-  }, 1500);
+  const intro = document.getElementById("introCard");
+  const hearts = document.querySelector(".hearts");
+  const heroImg = document.getElementById("heroImg");
+
+  // ✅ wait for browser render (IMPORTANT)
+  requestAnimationFrame(() => {
+
+    setTimeout(() => {
+      intro.classList.add("open");
+    }, 500); // faster + more reliable
+
+  });
 
   // REMOVE INTRO
   setTimeout(() => {
-    document.getElementById("introCard").style.display = "none";
-  }, 3500);
+    intro.style.display = "none";
+  }, 3200);
 
-  // 👉 IMAGE ANIMATION AFTER DOOR OPEN
+  // IMAGE ANIMATION
   setTimeout(() => {
-    document.getElementById("heroImg").classList.add("slide-in");
-  }, 3700);
+    heroImg.classList.add("slide-in");
+  }, 3300);
 
-  // hide after door opens
-setTimeout(() => {
-  document.querySelector(".hearts").style.display = "none";
-}, 3500);
+  // HIDE HEARTS
+  setTimeout(() => {
+    if (hearts) hearts.style.display = "none";
+  }, 3200);
 
 });
 
