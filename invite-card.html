@@ -742,6 +742,135 @@ font-family:'Poppins', sans-serif;
     opacity:0;
   }
 }
+
+
+ 
+.premium-btn {
+  position: relative;
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  color: #fff;
+  letter-spacing: 0.5px;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  /* Glow */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+  transition: all 0.4s ease;
+}
+
+/* GOLD BORDER ANIMATION */
+.premium-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  padding: 1px;
+
+  background: linear-gradient(
+    120deg,
+    #d4af37,
+    #fff2b0,
+    #caa85c,
+    #fff2b0,
+    #d4af37
+  );
+
+  background-size: 300% 300%;
+  animation: goldMove 4s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* TEXT GOLD SHINE */
+.premium-btn span {
+  background: linear-gradient(
+    120deg,
+    #ffd700,
+    #fff,
+    #ffd700
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* HOVER EFFECT */
+.premium-btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.5);
+}
+
+/* CLICK EFFECT */
+.premium-btn:active {
+  transform: scale(0.95);
+}
+
+/* GOLD ANIMATION */
+@keyframes goldMove {
+  0% { background-position: 0% }
+  100% { background-position: 300% }
+}
+
+/* SOFT GLOW RING */
+.premium-btn::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  border-radius: 50px;
+  background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.premium-btn:hover::after {
+  opacity: 1;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .premium-btn{
+    font-size:14px;
+    padding:12px 22px;
+  }
+}
+
+.download-icon {
+  margin-right: 8px;
+
+  /* Green gradient */
+  background: linear-gradient(120deg, #00ff9d, #00c853, #00ff9d);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Glow effect */
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.6),
+               0 0 15px rgba(0, 200, 83, 0.4);
+
+  animation: greenGlow 2s linear infinite;
+}
+
+/* subtle animation */
+@keyframes greenGlow {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+  100% { filter: brightness(1); }
+}
 </style>
 
 
@@ -787,6 +916,13 @@ font-family:'Poppins', sans-serif;
   alt="Welcome Hand" 
   class="queen slide-hidden mt-3" 
   id="heroImg">
+
+
+  <div class="text-center mt-4">
+<button id="downloadBtn" class="premium-btn" onclick="downloadPDF()">
+  <span><i class="fa-solid fa-download download-icon"></i> Download Invitation</span>
+</button>
+</div>
 
 </div>
 </div>
@@ -1166,6 +1302,15 @@ if(lang === "ta"){
 }
 
 
+ const downloadBtn = document.getElementById("downloadBtn");
+
+if(lang === "ta"){
+  downloadBtn.innerHTML = '<span><i class="fa-solid fa-download download-icon"></i> அழைப்பிதழ் பதிவிறக்கம்</span>';
+} else {
+  downloadBtn.innerHTML = '<span><i class="fa-solid fa-download download-icon"></i> Download Invitation</span>';
+}
+
+
 
   if(lang === "ta"){
 
@@ -1296,6 +1441,13 @@ for(let i=0; i<40; i++){
   star.style.animationDelay = Math.random()*3 + "s";
 
   starContainer.appendChild(star);
+}
+
+ function downloadPDF() {
+  const link = document.createElement("a");
+  link.href = "assets/invitation.pdf";
+  link.download = "Invitation.pdf";
+  link.click();
 }
 </script>
 
