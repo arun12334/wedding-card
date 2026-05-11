@@ -849,6 +849,103 @@ font-family:'Poppins', sans-serif;
   }
 }
 
+/* FLOATING SCROLL BUTTON */
+.scroll-nav{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:99999;
+    display:none; /* 👈 ADD THIS */
+
+ 
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+/* TEXT */
+.scroll-text{
+  background:rgba(0,0,0,0.7);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:1px;
+
+  backdrop-filter:blur(10px);
+
+  animation:pulseText 2s infinite;
+}
+
+/* BUTTON */
+#scrollBtn{
+  width:60px;
+  height:60px;
+  border:none;
+  border-radius:50%;
+
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+
+  color:#fff;
+  font-size:22px;
+
+  box-shadow:
+    0 5px 20px rgba(255,118,136,0.5),
+    0 0 20px rgba(255,118,136,0.3);
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+/* HOVER */
+#scrollBtn:hover{
+  transform:scale(1.1);
+}
+
+/* ICON ANIMATION */
+#scrollIcon{
+  animation:bounceArrow 1.5s infinite;
+}
+
+@keyframes bounceArrow{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(6px);
+  }
+}
+
+/* TEXT ANIMATION */
+@keyframes pulseText{
+  0%{
+    opacity:0.7;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    opacity:0.7;
+  }
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  #scrollBtn{
+    width:52px;
+    height:52px;
+    font-size:18px;
+  }
+
+  .scroll-text{
+    font-size:11px;
+    padding:6px 10px;
+  }
+
+}
+
 .download-icon {
   margin-right: 8px;
 
@@ -1115,6 +1212,19 @@ We are delighted to have you join us as we celebrate the union of Vijay and Dhan
 
 </div>
 
+<!-- SCROLL NAVIGATION -->
+<div id="scrollNav" class="scroll-nav">
+
+  <div class="scroll-text" id="scrollText" onclick="toggleScrollPage()">
+    Scrolling Down
+  </div>
+
+  <button id="scrollBtn" onclick="toggleScrollPage()">
+    <i id="scrollIcon" class="fa-solid fa-arrow-down"></i>
+  </button>
+
+</div>
+
 <script>
 
   let lang = localStorage.getItem("lang") || "ta";
@@ -1218,6 +1328,18 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     if (hearts) hearts.style.display = "none";
   }, 3200);
+
+  // SHOW SCROLL NAVIGATION
+setTimeout(() => {
+
+  const scrollNav =
+    document.getElementById("scrollNav");
+
+  if(scrollNav){
+    scrollNav.style.display = "flex";
+  }
+
+}, 4200);
 
 });
 
@@ -1449,6 +1571,98 @@ for(let i=0; i<40; i++){
   link.download = "Arun&Uma-Marriage-Invitation.pdf";
   link.click();
 }
+</script>
+
+<script>
+
+/* AUTO SCROLL AFTER DOOR OPEN */
+setTimeout(() => {
+
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+
+}, 4500);
+
+
+/* SCROLL BUTTON */
+function toggleScrollPage(){
+
+  const isBottom =
+    (window.innerHeight + window.scrollY)
+    >= document.body.offsetHeight - 50;
+
+  if(isBottom){
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }else{
+
+    window.scrollTo({
+      top:document.body.scrollHeight,
+      behavior:"smooth"
+    });
+
+  }
+}
+
+
+/* DYNAMIC ICON CHANGE */
+/* DYNAMIC ICON CHANGE */
+window.addEventListener("scroll", () => {
+
+  const scrollIcon =
+    document.getElementById("scrollIcon");
+
+  const scrollText =
+    document.getElementById("scrollText");
+
+  const scrollTop =
+    window.scrollY;
+
+  const windowHeight =
+    window.innerHeight;
+
+  const fullHeight =
+    document.documentElement.scrollHeight;
+
+  /* CHECK USER NEAR BOTTOM */
+  const isBottom =
+    (scrollTop + windowHeight)
+    >= (fullHeight - 100);
+
+  /* USER IN BOTTOM AREA */
+  if(isBottom){
+
+    scrollIcon.className =
+      "fa-solid fa-arrow-up";
+
+    scrollText.innerText =
+      localStorage.getItem("lang") === "ta"
+      ? "மேலே செல்ல"
+      : "Scrolling Up";
+
+  }
+
+  /* USER NOT BOTTOM */
+  else{
+
+    scrollIcon.className =
+      "fa-solid fa-arrow-down";
+
+    scrollText.innerText =
+      localStorage.getItem("lang") === "ta"
+      ? "கீழே செல்ல"
+      : "Scrolling Down";
+
+  }
+
+});
+
 </script>
 
 </body>
