@@ -946,13 +946,7 @@ font-family:'Poppins', sans-serif;
 
 }
 
- .mini-kural{
-  color:#fff;
-  font-size:15px;
-  line-height:1.8;
-  letter-spacing:1px;
-  opacity:0.9;
-}
+ 
 
 .download-icon {
   margin-right: 8px;
@@ -975,6 +969,101 @@ font-family:'Poppins', sans-serif;
   0% { filter: brightness(1); }
   50% { filter: brightness(1.5); }
   100% { filter: brightness(1); }
+}
+
+
+ /* =========================
+   THIRUKKURAL DESIGN
+========================= */
+
+.thirukural-box{
+
+  margin:auto;
+  max-width:700px;
+
+  padding:20px 25px;
+
+  border-radius:20px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,215,0,0.2);
+
+  box-shadow:
+  0 0 25px rgba(255,215,0,0.12);
+
+  text-align:center;
+
+  animation:
+  fadeKural 2s ease;
+}
+
+/* TEXT */
+.thirukural-line{
+
+  font-size:20px;
+  line-height:1.9;
+
+  font-weight:500;
+
+  letter-spacing:1px;
+
+  color:#fff4c2;
+
+  text-shadow:
+  0 0 10px rgba(255,215,0,0.4);
+
+}
+
+/* AUTHOR */
+.thirukural-author{
+
+  margin-top:12px;
+
+  font-size:14px;
+
+  color:#ffd700;
+
+  letter-spacing:2px;
+}
+
+/* ANIMATION */
+@keyframes fadeKural{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .thirukural-box{
+
+    padding:18px 15px;
+    margin-top:30px !important;
+  }
+
+  .thirukural-line{
+
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  .thirukural-author{
+
+    font-size:12px;
+  }
+
 }
 </style>
 
@@ -1028,19 +1117,22 @@ font-family:'Poppins', sans-serif;
   <span><i class="fa-solid fa-download download-icon"></i> Download Invitation</span>
 </button>
 </div>
-<div class="mt-5">
+<div class="thirukural-box mt-5">
 
-  <h6 class="gold-text">
-    பிறப்பொக்கும் எல்லா உயிர்க்கும்
-  </h6>
-
-  <div class="mini-kural mt-3 ">
+  <div class="thirukural-line  " >
     அன்பும் அறனும் உடைத்தாயின் இல்வாழ்க்கை
-    <br>
+  </div>
+
+  <div class="thirukural-line ">
     பண்பும் பயனும் அது.
   </div>
 
+ 
+
 </div>
+  <h6 class="gold-text mt-5">
+    பிறப்பொக்கும் எல்லா உயிர்க்கும்
+  </h6>
 </div>
 </div>
 
