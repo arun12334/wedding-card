@@ -152,13 +152,13 @@ font-size:20px;
 }
 
 /* COUNTDOWN SECTION */
-.count-section{
+ .count-section{
 background:#e9737a;
 color:#fff;
 padding:60px 20px;
 text-align:center;
 }
-
+ 
 .timer-box{
 border:1px solid rgba(255,255,255,0.5);
 padding:5px;
@@ -200,6 +200,62 @@ text-align:center;
 .footer{
 text-align:center;
 padding:40px;
+}
+
+ /* SAME PURPLE DESIGN FOR ALL 3 */
+
+.count-section,
+.guest,
+.footer{
+
+  background:
+  radial-gradient(
+    circle at top,
+    #8454a1,
+    #2a0f3f 70%
+  );
+
+  position:relative;
+
+  overflow:hidden;
+
+  color:#fff;
+
+  text-align:center;
+
+  padding:70px 20px;
+}
+
+/* GOLD GLOW */
+.count-section::before,
+.guest::before,
+.footer::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(circle at 20% 30%,
+    rgba(255,215,0,0.08),
+    transparent 40%),
+
+    radial-gradient(circle at 80% 70%,
+    rgba(255,215,0,0.08),
+    transparent 40%);
+
+  pointer-events:none;
+}
+
+/* CONTENT ABOVE STARS */
+.count-section > *,
+.guest > *,
+.footer > *{
+
+  position:relative;
+  z-index:2;
 }
 
 .section {
@@ -1212,25 +1268,25 @@ font-family:'Poppins', sans-serif;
 <div class="count-section">
 
  
-<h2 id="countTitle1">We Are Waiting For...</h2>
-<h1 id="countTitle2">The Big Day</h1>
+<h2 id="countTitle1" class="gold-text">We Are Waiting For...</h2>
+<h1 id="countTitle2 " class="gold-text">The Big Day</h1>
 
 <div class="container">
 <div class="row justify-content-center">
 
 <div class="col-3 timer-box">
-<div id="days" class="timer-number">00</div>
-<p id="day">Days</p>
+<div id="days" class="timer-number gold-text">00</div>
+<p id="day" class="gold-text">Days</p>
 </div>
 
 <div class="col-3 timer-box">
-<div id="hours" class="timer-number">00</div>
-<p id="Hours">Hours</p>
+<div id="hours" class="timer-number gold-text">00</div>
+<p id="Hours" class="gold-text">Hours</p>
 </div>
 
 <div class="col-3 timer-box">
-<div id="mins" class="timer-number">00</div>
-<p id="Minutes">Minutes</p>
+<div id="mins" class="timer-number gold-text">00</div>
+<p id="Minutes" class="gold-text">Minutes</p>
 </div>
 
  
