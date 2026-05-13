@@ -10,190 +10,686 @@
 
 <style>
 
-/* Default (Mobile First) */
+/* =========================
+   BODY
+========================= */
+
 body{
+
+  margin:0;
+
   height:100vh;
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
-  background: linear-gradient(135deg,#f8f2e7,#fce3d4);
-  font-family: 'Georgia', serif;
+
+  overflow:hidden;
+
+  position:relative;
+
+  font-family:Georgia, serif;
+
   padding:15px;
+
+  background:
+  radial-gradient(
+    circle at top,
+    #8454a1,
+    #2a0f3f 70%
+  );
 }
 
-.container-box{
-  width:100%;
-  max-width:350px;
-  background:#ffffff;
-  padding:25px 20px;
-  border-radius:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  text-align:center;
-  animation:fadeIn 1s ease;
+/* GOLD LIGHT */
+body::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    radial-gradient(circle at 20% 30%,
+    rgba(255,215,0,0.08),
+    transparent 40%),
+
+    radial-gradient(circle at 80% 70%,
+    rgba(255,215,0,0.08),
+    transparent 40%);
+
+  pointer-events:none;
 }
 
-/* Title */
-.container-box h3{
-  margin-bottom:15px;
-  font-weight:bold;
-  color:#b33c3c;
-  font-size:20px;
-}
+/* =========================
+   STARS
+========================= */
 
-/* Subtitle */
-.subtitle{
-  font-size:13px;
-  color:#666;
-}
+.stars{
 
-/* Input */
-.form-control{
-  border-radius:25px;
-  padding:10px;
-  margin-top:10px;
-}
+  position:absolute;
 
-/* Button */
-.btn-danger{
-  border-radius:25px;
-  padding:10px;
-  font-size:14px;
-  margin-top:15px;
-}
-
-/* ========================= */
-/* 🖥️ Desktop View */
-/* ========================= */
-@media (min-width: 768px){
-
-  body{
-    background: linear-gradient(135deg,#fce3d4,#f8f2e7);
-  }
-
-  .container-box{
-    max-width:600px;
-    padding:40px;
-    border-radius:20px;
-  }
-
-  .container-box h3{
-    font-size:28px;
-  }
-
-  .subtitle{
-    font-size:16px;
-    margin-bottom:15px;
-  }
-
-  .form-control{
-    padding:14px;
-    font-size:16px;
-  }
-
-  .btn-danger{
-    padding:14px;
-    font-size:16px;
-  }
-
-}
-
-
-#gifOverlay{
-  position:fixed;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
-background: url('https://i.pinimg.com/originals/52/02/dd/5202ddbf0549a42006093edb3084555f.gif') center center / contain no-repeat;
-background-color: #000; /* optional for better look */
+
+  top:0;
+  left:0;
+
+  overflow:hidden;
+
+  z-index:1;
+}
+
+/* SINGLE STAR */
+.star{
+
+  position:absolute;
+
+  width:4px;
+  height:4px;
+
+  background:#ffd700;
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 10px #ffd700,
+    0 0 20px #ffd700;
+
+  animation:
+    twinkle 2s infinite ease-in-out;
+}
+
+/* STAR ANIMATION */
+@keyframes twinkle{
+
+  0%,100%{
+    opacity:0.2;
+    transform:scale(0.5);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.5);
+  }
+}
+
+/* =========================
+   MOON
+========================= */
+
+.moon{
+
+  position:absolute;
+
+  top:60px;
+  right:60px;
+
+  width:100px;
+  height:100px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle at 30% 30%,
+  #fff8dc,
+  #f4d03f 70%);
+
+  box-shadow:
+    0 0 40px rgba(255,215,0,0.5),
+    0 0 80px rgba(255,215,0,0.3);
+
+  z-index:1;
+}
+
+/* =========================
+   LANGUAGE BUTTONS
+========================= */
+
+.lang-switch{
+
+  position:absolute;
+
+  top:20px;
+  right:20px;
+
+  z-index:10;
+}
+
+.lang-switch button{
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:30px;
+
+  margin-left:8px;
+
+  color:#fff;
+
+  font-size:13px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 5px 15px rgba(0,0,0,0.25);
+
+  transition:0.3s;
+}
+
+/* HOVER */
+.lang-switch button:hover{
+
+  transform:scale(1.08);
+
+  box-shadow:
+  0 10px 25px rgba(255,215,0,0.35);
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.container-box{
+
+  position:relative;
+
+  z-index:5;
+
+  width:100%;
+  max-width:420px;
+
+  padding:40px 25px;
+
+  border-radius:30px;
+
+  text-align:center;
+
+  background:
+  rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,215,0,0.2);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 25px rgba(255,215,0,0.08);
+
+  animation:
+  fadeIn 1.2s ease;
+}
+
+/* GOLD BORDER */
+.container-box::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:30px;
+
+  padding:1px;
+
+  background:linear-gradient(
+    120deg,
+    #d4af37,
+    #fff2b0,
+    #caa85c,
+    #fff2b0,
+    #d4af37
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+
+  mask-composite:exclude;
+
+  opacity:0.5;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.container-box h3{
+
+  margin-bottom:15px;
+
+  font-size:34px;
+
+  font-weight:bold;
+
+  background: linear-gradient(
+    120deg,
+    #d4af37,
+    #fff2b0,
+    #caa85c,
+    #fff2b0,
+    #d4af37
+  );
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:
+    0 0 10px rgba(255,215,0,0.4);
+}
+
+/* SUBTITLE */
+.subtitle{
+
+  font-size:15px;
+
+  color:#fff;
+
+  opacity:0.9;
+
+  margin-bottom:18px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.form-control{
+
+  border:none;
+
+  border-radius:50px;
+
+  padding:14px 18px;
+
+  margin-top:10px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  color:#fff;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  inset 0 0 10px rgba(255,255,255,0.08);
+}
+
+/* PLACEHOLDER */
+.form-control::placeholder{
+  color:rgba(255,255,255,0.7);
+}
+
+/* FOCUS */
+.form-control:focus{
+
+  background:
+  rgba(255,255,255,0.12);
+
+  color:#fff;
+
+  box-shadow:
+    0 0 15px rgba(255,215,0,0.25);
+
+  border:none;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn-danger{
+
+  margin-top:20px;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:50px;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  letter-spacing:1px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  color:#fff;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 8px 20px rgba(0,0,0,0.3);
+
+  transition:0.4s;
+}
+
+/* GOLD BORDER */
+.btn-danger::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:50px;
+
+  padding:1px;
+
+  background:linear-gradient(
+    120deg,
+    #d4af37,
+    #fff2b0,
+    #caa85c,
+    #fff2b0,
+    #d4af37
+  );
+
+  background-size:300% 300%;
+
+  animation:
+  goldMove 4s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+
+  mask-composite:exclude;
+}
+
+/* HOVER */
+.btn-danger:hover{
+
+  transform:
+  translateY(-4px)
+  scale(1.05);
+
+  box-shadow:
+  0 15px 40px rgba(255,215,0,0.4);
+}
+
+/* =========================
+   GIF OVERLAY
+========================= */
+
+#gifOverlay{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  background:
+  url('https://i.pinimg.com/originals/52/02/dd/5202ddbf0549a42006093edb3084555f.gif')
+  center center / contain no-repeat;
+
+  background-color:#000;
+
   z-index:9999;
+
   visibility:hidden;
+
   opacity:0;
+
   transition:0.3s;
 }
 
 #gifOverlay.show{
+
   visibility:visible;
+
   opacity:1;
 }
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes goldMove{
+
+  0%{
+    background-position:0%;
+  }
+
+  100%{
+    background-position:300%;
+  }
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .container-box{
+
+    padding:35px 20px;
+  }
+
+  .container-box h3{
+
+    font-size:28px;
+  }
+
+  .moon{
+
+    width:70px;
+    height:70px;
+
+    top:20px;
+    right:20px;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
-  <div style="position:absolute; top:20px; right:20px;">
-  <button class="btn btn-sm btn-outline-dark" onclick="setLang('en')">EN</button>
-  <button class="btn btn-sm btn-outline-danger" onclick="setLang('ta')">தமிழ்</button>
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+
+<!-- MOON -->
+<!-- <div class="moon"></div> -->
+
+<!-- LANGUAGE -->
+<div class="lang-switch">
+
+  <button onclick="setLang('en')">
+    EN
+  </button>
+
+  <button onclick="setLang('ta')">
+    தமிழ்
+  </button>
+
 </div>
 
-
+<!-- GIF -->
 <div id="gifOverlay"></div>
-  <div class="container-box">
 
+<!-- CARD -->
+<div class="container-box">
 
+  <h3 id="title"></h3>
 
-<h3 id="title"></h3>
-<p class="subtitle" id="subtitle"></p>
+  <p class="subtitle" id="subtitle"></p>
 
-<input type="text" id="username" class="form-control">
+  <input
+    type="text"
+    id="username"
+    class="form-control">
 
-<button class="btn btn-danger w-100 mt-3" onclick="goInvite()" id="btnText"></button>
+  <button
+    class="btn btn-danger w-100"
+    onclick="goInvite()"
+    id="btnText">
 
-  </div>
- 
+  </button>
+
+</div>
 
 <script>
+
+/* STARS */
+const stars =
+document.getElementById("stars");
+
+for(let i=0; i<60; i++){
+
+  const star =
+  document.createElement("div");
+
+  star.classList.add("star");
+
+  star.style.top =
+  Math.random()*100 + "%";
+
+  star.style.left =
+  Math.random()*100 + "%";
+
+  star.style.animationDelay =
+  Math.random()*3 + "s";
+
+  star.style.width =
+  2 + Math.random()*4 + "px";
+
+  star.style.height =
+  star.style.width;
+
+  stars.appendChild(star);
+}
+
+/* INVITE */
 function goInvite(){
-  let name = document.getElementById("username").value;
+
+  let name =
+  document.getElementById("username").value;
 
   if(name.trim() === ""){
+
     alert("தயவு செய்து உங்கள் பெயரை உள்ளிடவும்");
+
     return;
   }
 
-  localStorage.setItem("inviteName", name);
+  localStorage.setItem(
+    "inviteName",
+    name
+  );
 
-  // Show GIF
-  let overlay = document.getElementById("gifOverlay");
+  let overlay =
+  document.getElementById("gifOverlay");
+
   overlay.classList.add("show");
 
-  // Wait 3 seconds then navigate
   setTimeout(() => {
-    window.location.href = "letter.html";
-     // ✅ STORE interaction
-  localStorage.setItem("musicAllowed", "true");
+
+    localStorage.setItem(
+      "musicAllowed",
+      "true"
+    );
+
+    window.location.href =
+    "letter.html";
+
   }, 1000);
 }
 
+/* LANGUAGE */
 function setLang(selectedLang){
-  localStorage.setItem("lang", selectedLang);
+
+  localStorage.setItem(
+    "lang",
+    selectedLang
+  );
+
   location.reload();
 }
-</script>
 
-
-
-<script>
-let lang = localStorage.getItem("lang") || "en";
+/* LOAD LANGUAGE */
+let lang =
+localStorage.getItem("lang") || "en";
 
 function loadLanguage(){
 
   if(lang === "ta"){
-    document.getElementById("title").innerText = "🙏 வணக்கம்";
-    document.getElementById("subtitle").innerText = "உங்களை அன்புடன் வரவேற்கிறோம் ❤️";
-    document.getElementById("username").placeholder = "உங்கள் பெயரை உள்ளிடவும்";
-    document.getElementById("btnText").innerText = "அழைப்பிதழை காண ->";
-  }
-  else{
-    document.getElementById("title").innerText = "🙏 Welcome";
-    document.getElementById("subtitle").innerText = "We are happy to invite you ❤️";
-    document.getElementById("username").placeholder = "Enter your name";
-    document.getElementById("btnText").innerText = "View Invitation ->";
+
+    document.getElementById("title")
+    .innerText = "🙏 வணக்கம்";
+
+    document.getElementById("subtitle")
+    .innerText =
+    "உங்களை அன்புடன் வரவேற்கிறோம் ❤️";
+
+    document.getElementById("username")
+    .placeholder =
+    "உங்கள் பெயரை உள்ளிடவும்";
+
+    document.getElementById("btnText")
+    .innerText =
+    "அழைப்பிதழை காண →";
   }
 
+  else{
+
+    document.getElementById("title")
+    .innerText = "🙏 Welcome";
+
+    document.getElementById("subtitle")
+    .innerText =
+    "We are happy to invite you ❤️";
+
+    document.getElementById("username")
+    .placeholder =
+    "Enter your name";
+
+    document.getElementById("btnText")
+    .innerText =
+    "View Invitation →";
+  }
 }
 
 loadLanguage();
+
 </script>
 
 </body>
