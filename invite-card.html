@@ -1121,6 +1121,125 @@ font-family:'Poppins', sans-serif;
   }
 
 }
+
+
+/* =========================
+   KAVITHAI PREMIUM EFFECT
+========================= */
+
+.animate-kavithai{
+
+  position:relative;
+
+  overflow:hidden;
+
+  animation:
+  kavithaiFade 1.5s ease;
+}
+
+/* MAIN TEXT */
+.kavithai-lines{
+
+  animation:
+  softFloat 5s ease-in-out infinite;
+
+  transition:0.4s;
+}
+
+/* SPECIAL LOVE LINE */
+.love-line{
+
+  display:inline-block;
+
+  font-size:18px;
+
+  color:#b86b00;
+
+  text-shadow:
+    0 0 8px rgba(255,215,0,0.4);
+
+  animation:
+    glowLove 2s infinite alternate,
+    floatingLove 3s ease-in-out infinite;
+
+}
+
+/* BOX HOVER */
+.animate-kavithai:hover{
+
+  transform:translateY(-3px);
+
+  transition:0.4s;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* ENTRY */
+@keyframes kavithaiFade{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* SOFT FLOAT */
+@keyframes softFloat{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* GLOW */
+@keyframes glowLove{
+
+  from{
+    text-shadow:
+      0 0 5px rgba(255,215,0,0.3);
+  }
+
+  to{
+    text-shadow:
+      0 0 18px rgba(255,215,0,0.8);
+  }
+}
+
+/* FLOAT SPECIAL LINE */
+@keyframes floatingLove{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-8px) scale(1.03);
+  }
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .love-line{
+
+    font-size:15px;
+    line-height:1.8;
+  }
+
+}
+ 
+
+ 
 </style>
 
 
@@ -1255,7 +1374,7 @@ font-family:'Poppins', sans-serif;
   நாங்கள் காலடி எடுத்து வைக்கும் இந்த திருமண விழாவில் தங்களின் வருகையும், ஆசீர்வாதங்களையும் எதிர்நோக்குகிறோம்....<br>
   எங்கள் திருமண விழாவிற்கு உங்களை அன்புடன் வரவேற்கிறோம்.<br><br>
 
-  <strong>பெயர் சொல்ல மறந்தாலும் எல்லோர் மீதும் பாசம் உண்டு 🙏💖</strong>
+  <strong class="love-line">பெயர் சொல்ல மறந்தாலும் எல்லோர் மீதும் பாசம் உண்டு 🙏💖</strong>
 </div>
 
   <div class="welcome-box">
@@ -1360,7 +1479,7 @@ font-family:'Poppins', sans-serif;
 
 <!-- GUEST -->
 <div class="guest">
-<h2 id="guestTitle" style="font-size: 32px;">Be Our Guest</h2>
+<h2 id="guestTitle" class="gold-text" style="font-size: 32px;">Be Our Guest</h2>
 <p id="guestText">"Welcome to the beginning of a beautiful forever!
 We are delighted to have you join us as we celebrate the union of Arun and Uma. Your presence today brings joy and love to this special occasion."</p>
 </div>
@@ -1651,7 +1770,7 @@ if(lang === "ta"){
     document.getElementById("viewBtn1").innerText = "மேலும் விவரங்கள்";
     document.getElementById("day").innerText = "நாள்கள்";
     document.getElementById("Hours").innerText = "மணிகள்";
-    document.getElementById("Minutes").innerText = "நிமிடங்கள்";
+    document.getElementById("Minutes").innerText = "நிமிடம்";
     document.getElementById("bless").innerText = "பெற்றோர்கள் ஆசிர்வாதத்துடன் 🙌";
     
 
