@@ -1320,6 +1320,372 @@ font-family:'Poppins', sans-serif;
   }
 
 }
+
+
+ 
+/* =========================
+   ROYAL COIN WRAPPER
+========================= */
+
+.royal-coin-wrapper{
+
+  position:relative;
+
+  width:220px;
+  height:220px;
+
+  margin:0 auto 35px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  perspective:1200px;
+}
+
+/* =========================
+   WAVES
+========================= */
+/* =========================
+   CONTINUOUS WAVES
+========================= */
+
+ /* =========================
+   RADAR WAVES
+========================= */
+
+.coin-wave{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  border:
+  1.5px solid rgba(255,255,255,0.18);
+
+  pointer-events:none;
+
+  opacity:0.15;
+
+  animation:
+  radarWave 3s linear infinite;
+}
+
+/* FIXED CIRCLE SIZES */
+
+.wave1{
+  width:80px;
+  height:80px;
+  animation-delay:0s;
+}
+
+.wave2{
+  width:110px;
+  height:110px;
+  animation-delay:0.3s;
+}
+
+.wave3{
+  width:145px;
+  height:145px;
+  animation-delay:0.6s;
+}
+
+.wave4{
+  width:185px;
+  height:185px;
+  animation-delay:0.9s;
+}
+
+ 
+/* =========================
+   GLOW MOVEMENT
+========================= */
+
+@keyframes radarWave{
+
+  0%{
+
+    opacity:0.08;
+
+    border-color:
+    rgba(255,255,255,0.12);
+
+    box-shadow:none;
+  }
+
+  50%{
+
+    opacity:1;
+
+    border-color:
+    rgba(255,215,0,0.95);
+
+    box-shadow:
+
+      0 0 15px rgba(255,215,0,0.7),
+
+      0 0 35px rgba(255,215,0,0.45);
+  }
+
+  100%{
+
+    opacity:0.08;
+
+    border-color:
+    rgba(255,255,255,0.12);
+
+    box-shadow:none;
+  }
+}
+ 
+
+/* =========================
+   3D COIN
+========================= */
+
+.coin-3d{
+
+  width:140px;
+  height:140px;
+
+  position:relative;
+
+  transform-style:preserve-3d;
+
+  animation:
+spinCoin 4s cubic-bezier(.45,.05,.55,.95) infinite,
+floatCoin 5s ease-in-out infinite;
+}
+
+/* SPIN */
+@keyframes spinCoin{
+
+  0%{
+    transform:
+    rotateY(0deg);
+  }
+
+  100%{
+    transform:
+    rotateY(360deg);
+  }
+}
+
+/* FLOAT */
+@keyframes floatCoin{
+
+  0%,100%{
+    margin-top:0;
+  }
+
+  50%{
+    margin-top:-10px;
+  }
+}
+
+/* =========================
+   BOTH SIDES
+========================= */
+
+.coin-face{
+
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+  border-radius:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  backface-visibility:hidden;
+
+  overflow:hidden;
+
+  background:
+  radial-gradient(
+    circle at 30% 30%,
+    #fff7cc,
+    #f3d15c 20%,
+    #d4af37 45%,
+    #8a5c00 100%
+  );
+
+  box-shadow:
+
+    0 0 35px rgba(255,215,0,0.5),
+
+    inset 0 3px 10px rgba(255,255,255,0.7),
+
+    inset 0 -10px 15px rgba(0,0,0,0.25),
+
+    0 8px 20px rgba(0,0,0,0.35);
+
+  border:
+  3px solid rgba(255,255,255,0.3);
+}
+
+/* FRONT */
+.coin-front{
+  z-index:2;
+}
+
+/* BACK */
+.coin-back{
+  transform:rotateY(180deg);
+}
+
+/* INNER PREMIUM RING */
+.coin-face::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:8px;
+
+  border-radius:50%;
+
+  border:
+  2px dashed rgba(255,255,255,0.5);
+
+  box-shadow:
+  inset 0 0 10px rgba(255,255,255,0.25);
+}
+
+/* EXTRA GOLD SHINE */
+.coin-face::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:-20%;
+  left:-40%;
+
+  width:70%;
+  height:160%;
+
+  background:
+  linear-gradient(
+    120deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.45),
+    rgba(255,255,255,0)
+  );
+
+  transform:rotate(20deg);
+
+  animation:
+  shineMove 3s linear infinite;
+}
+
+/* SHINE */
+@keyframes shineMove{
+
+  0%{
+    left:-60%;
+  }
+
+  100%{
+    left:130%;
+  }
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.coin-inner{
+
+  position:relative;
+
+  z-index:5;
+
+  text-align:center;
+}
+
+/* MONTH */
+.coin-month{
+
+  font-size:16px;
+
+  letter-spacing:4px;
+
+  color:#5c3900;
+
+  font-weight:bold;
+
+  text-shadow:
+  0 0 5px rgba(255,255,255,0.4);
+}
+
+/* DATE */
+.coin-date{
+
+  font-size:58px;
+
+  line-height:1;
+
+  font-weight:bold;
+
+  color:#fffbea;
+
+  text-shadow:
+
+    0 0 10px rgba(255,255,255,0.4),
+
+    0 0 25px rgba(255,215,0,0.6);
+}
+
+/* YEAR */
+.coin-year{
+
+  font-size:14px;
+
+  letter-spacing:3px;
+
+  color:#5c3900;
+
+  margin-top:4px;
+
+  font-weight:700;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .royal-coin-wrapper{
+
+    width:180px;
+    height:180px;
+  }
+
+  .coin-3d{
+
+    width:120px;
+    height:120px;
+  }
+
+  .coin-date{
+
+    font-size:48px;
+  }
+
+  .coin-month{
+
+    font-size:14px;
+  }
+ 
+}
+ 
+
  
 
  
@@ -1468,7 +1834,64 @@ font-family:'Poppins', sans-serif;
 
 <!-- COUNTDOWN -->
 <div class="count-section">
+  <!-- ROYAL DATE COIN -->
+<div class="royal-coin-wrapper">
 
+  <!-- WAVES -->
+<!-- WAVES -->
+<span class="coin-wave wave1"></span>
+<span class="coin-wave wave2"></span>
+<span class="coin-wave wave3"></span>
+<span class="coin-wave wave4"></span>
+ 
+  <!-- 3D COIN -->
+  <div class="coin-3d">
+
+    <!-- FRONT -->
+    <div class="coin-face coin-front">
+
+      <div class="coin-inner">
+
+        <div class="coin-month">
+          MAY
+        </div>
+
+        <div class="coin-date">
+          29
+        </div>
+
+        <div class="coin-year">
+          2026
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BACK -->
+    <div class="coin-face coin-back">
+
+      <div class="coin-inner">
+
+        <div class="coin-month">
+          MAY
+        </div>
+
+        <div class="coin-date">
+          29
+        </div>
+
+        <div class="coin-year">
+          2026
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
  
 <h2 id="countTitle1" class="gold-text">We Are Waiting For...</h2>
 <h1 id="countTitle2" class="gold-text">The Big Day</h1>
