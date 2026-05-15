@@ -578,53 +578,53 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
   transform:rotateY(180deg);
 }
 
-/* HEART */
-.ring-heart{
-  width:60px;
-  height:60px;
-  background:#e9737a;
-  position:relative;
-  transform:rotate(-45deg);
+
+
+.center-gif-wrapper{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+/* GIF */
+.center-heart-gif{
+
+  width:90px;
+  height:90px;
+
+  object-fit:contain;
+
+  display:block;
+
   margin:auto;
+
+  transform-origin:center center;
+
+  animation:gifBeat 1.2s infinite;
 }
 
-/* HEART SHAPE */
-.ring-heart::before,
-.ring-heart::after{
-  content:"";
-  position:absolute;
-  width:60px;
-  height:60px;
-  background:#e9737a;
-  border-radius:50%;
-}
+/* MOBILE */
+@media(max-width:600px){
 
+  .center-heart-gif{
+
+    width:75px;
+    height:75px;
+
+  }
+
+}
+ 
 /* Tamil smaller size */
 .tamil-font{
   font-size:40px !important;
 }
 
-.ring-heart::before{
-  top:-30px;
-  left:0;
-}
-
-.ring-heart::after{
-  left:30px;
-  top:0;
-}
-
-/* HEARTBEAT */
-@keyframes beat{
-  0%{ transform:rotate(-45deg) scale(1);}
-  50%{ transform:rotate(-45deg) scale(1.2);}
-  100%{ transform:rotate(-45deg) scale(1);}
-}
-
-.ring-heart{
-  animation:beat 1s infinite;
-}
-
+ 
 /* MOBILE FIX */
 @media(max-width:600px){
 
@@ -1883,10 +1883,16 @@ floatCoin 5s ease-in-out infinite;
 
   </div>
 
-  <!-- Heart -->
-  <div class="col-2 col-md-2 text-center">
-    <div class="ring-heart"></div>
-  </div> 
+<!-- CENTER GIF -->
+<div class="col-2 col-md-2 center-gif-wrapper">
+
+  <img 
+    src="assets/output-onlinegiftools.gif"
+    class="center-heart-gif"
+    alt="Heart Gif"
+  >
+
+</div>
 
   <!-- Bride -->
   <div class="col-5 col-md-5 text-center">
