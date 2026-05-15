@@ -599,6 +599,7 @@ for(let i=0; i<60; i++){
 }
 
 /* INVITE */
+/* INVITE */
 function goInvite(){
 
   let name =
@@ -606,10 +607,41 @@ function goInvite(){
 
   if(name.trim() === ""){
 
-    alert("தயவு செய்து உங்கள் பெயரை உள்ளிடவும்");
+    alert(
+      "தயவு செய்து உங்கள் பெயரை உள்ளிடவும்"
+    );
 
     return;
   }
+
+  /* SAVE GOOGLE SHEET BACKGROUND */
+
+  fetch(
+
+    "https://script.google.com/macros/s/AKfycby1b_QqEvZ31SAtRDVcYCe_0GZX38M74PhIvQmUKa5EHR_mAMWXomMEGV9CJL249-c/exec",
+
+    {
+
+      method:"POST",
+
+      mode:"no-cors",
+
+      headers:{
+        "Content-Type":
+        "application/json"
+      },
+
+      body:JSON.stringify({
+
+        name:name
+
+      })
+
+    }
+
+  );
+
+  /* LOCAL STORAGE */
 
   localStorage.setItem(
     "inviteName",
@@ -631,8 +663,10 @@ function goInvite(){
     window.location.href =
     "letter.html";
 
-  }, 1000);
+  }, 500);
+
 }
+
 
 /* LANGUAGE */
 function setLang(selectedLang){
@@ -691,6 +725,5 @@ function loadLanguage(){
 loadLanguage();
 
 </script>
-
 </body>
 </html>
