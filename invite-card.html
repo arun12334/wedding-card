@@ -226,6 +226,31 @@ padding:40px;
   padding:70px 20px;
 }
 
+
+
+/* =========================
+   FOOTER BOTTOM FIX
+========================= */
+
+.footer{
+
+  padding-top:70px !important;
+
+  padding-left:20px !important;
+
+  padding-right:20px !important;
+
+  padding-bottom:20px !important;
+}
+
+/* QUOTE RUNNER */
+
+.quote-runner{
+
+  margin-top:20px;
+
+  margin-bottom:0 !important;
+}
 /* GOLD GLOW */
 .count-section::before,
 .guest::before,
@@ -1687,6 +1712,80 @@ floatCoin 5s ease-in-out infinite;
  
 
  
+ /* =========================
+   RUNNING QUOTES
+========================= */
+
+.quote-runner{
+
+  width:100%;
+
+  overflow:hidden;
+
+  margin-top:25px;
+
+  position:relative;
+}
+
+/* TRACK */
+
+.quote-track{
+
+  display:flex;
+
+  width:max-content;
+
+  white-space:nowrap;
+
+  animation:
+  footerRun 80s linear infinite;
+}
+
+/* SINGLE QUOTE */
+
+.quote{
+
+  display:inline-block;
+
+  margin-right:70px;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  color:#fff2b0;
+
+  letter-spacing:1px;
+
+  text-shadow:
+  0 0 8px rgba(255,215,0,0.4);
+}
+
+/* CONTINUOUS RUN */
+
+@keyframes footerRun{
+
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .quote{
+
+    font-size:11px;
+
+    margin-right:45px;
+  }
+
+}
 
  
 </style>
@@ -2013,8 +2112,16 @@ We are delighted to have you join us as we celebrate the union of Arun and Uma. 
   </div>
 <h3 id="footerText" class="text-white">Thank You</h3>
 <p id="footerSub" class="text-white">Awaiting your presence...</p>
+<!-- RUNNING QUOTES -->
+
+
 <!-- <img src="https://png.pngtree.com/png-vector/20250309/ourmid/pngtree-adorable-cartoon-wedding-couple-traditional-indian-marriage-attire-png-image_15745834.png" style="display:block; margin:0 auto; width:100px;"> -->
 <img src="assets/tom.webp" style="display:block; margin:0 auto; width:100px;">
+<div class="quote-runner">
+
+  <div class="quote-track"  id="quoteTrack"></div>
+
+</div>
 </div>
 
 <!-- SCROLL NAVIGATION -->
@@ -2211,7 +2318,11 @@ function applyLanguage(){
 
 
 
+
+
+
   let lang = localStorage.getItem("lang") || "ta";
+
 
 const groom = document.getElementById("groomName");
 const bride = document.getElementById("brideName");
@@ -2237,6 +2348,71 @@ if(lang === "ta"){
   downloadBtn.innerHTML = '<span><i class="fa-solid fa-download download-icon"></i> Download Invitation</span>';
 }
 
+
+/* =========================
+   FOOTER RUNNING QUOTES
+========================= */
+
+const tamilQuotes = [
+
+"🌹 காதலும் நம்பிக்கையும் சேர்ந்தால் வாழ்க்கை ஒரு அழகான கவிதையாக மாறுகிறது 💖🎉",
+
+"🌹 காத்திருப்பின் ஒவ்வொரு நொடியும் இனிமைதான்... உன்னுடன் வாழப்போகும் நாளை நினைத்தால் ✨💍",
+
+"💖 காதல் கண்களில் தொடங்கலாம்... ஆனால் திருமணம் இதயங்களில் வாழ கற்றுத்தருகிறது 💍✨",
+
+"🌸 திருமணம் என்பது இரண்டு இதயங்கள் மட்டும் அல்ல, இரண்டு குடும்பங்களின் இனிய இணைவு ❤️",
+
+"🌹 கை கோர்த்து நடக்கும் பாதை நீண்டதாக இருந்தாலும், அன்பு இருந்தால் அது அழகான பயணமாக மாறும் 💖🙏"
+
+];
+
+const englishQuotes = [
+
+"🌹 When love and trust come together, life becomes a beautiful poem 💖🎉",
+
+"🌹 Every moment of waiting feels sweet... when thinking about a lifetime together ✨💍",
+
+"💖 Love may begin in the eyes... but marriage teaches hearts how to live together 💍✨",
+
+"🌸 Marriage is not just the union of two hearts, but the beautiful bond of two families ❤️",
+
+"🌹 The journey may be long when walking hand in hand, but with love it becomes beautiful 💖🙏"
+
+];
+
+const track =
+document.getElementById("quoteTrack");
+
+track.innerHTML = "";
+
+const selectedQuotes =
+(lang === "ta")
+? tamilQuotes
+: englishQuotes;
+
+/* DUPLICATE FOR SMOOTH LOOP */
+
+const allQuotes = [
+
+  ...selectedQuotes,
+  ...selectedQuotes,
+  ...selectedQuotes
+
+];
+
+allQuotes.forEach((text)=>{
+
+  const div =
+  document.createElement("div");
+
+  div.className = "quote";
+
+  div.innerHTML = text;
+
+  track.appendChild(div);
+
+});
 
 
   if(lang === "ta"){
