@@ -1711,6 +1711,8 @@ floatCoin 5s ease-in-out infinite;
 }
  
 
+
+
  
  /* =========================
    RUNNING QUOTES
@@ -1785,6 +1787,60 @@ floatCoin 5s ease-in-out infinite;
     margin-right:45px;
   }
 
+}
+
+
+.section {
+  padding: 40px 20px;
+  background: #f8f4ef;
+}
+
+.script-font {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: #d88c9a;
+}
+
+#appa, #amma {
+  font-size: 18px;
+  color: #333;
+}
+
+.venue-title {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+.map-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #0d6efd;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.map-btn:hover {
+  background: #c06f7e;
 }
 
  
@@ -2098,10 +2154,34 @@ We are delighted to have you join us as we celebrate the union of Arun and Uma. 
 <div class="section text-center">
   <h2 class="script-font" id="bless">With Blessings Of</h2>
 
-  <p id="appa" class="mb-0 mt-3"> Mr. P. Mani 🤍 Mrs. M. Kavitha
-     </p>  <br>
-  <p id="amma" class="mb-0">  Mr. R. Ramesh 🤍 Mrs. R.Muthu Parvathi
+  <p id="appa" class="mb-0 mt-3">
+    Mr. P. Mani 🤍 Mrs. M. Kavitha
   </p>
+  <br>
+  <p id="amma" class="mb-0">
+    Mr. R. Ramesh 🤍 Mrs. R. Muthu Parvathi
+  </p>
+
+  
+</div>
+<div class="container text-center mb-3"> 
+  <!-- Venue Title -->
+  <h4 class="venue-title mt-4" id="map-loc-tir-btn">📍 Venue Location</h4>
+
+  <!-- Google Map -->
+  <div class="map-container">
+    <iframe 
+      id="venueMap"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- Optional Button -->
+  <a href="https://maps.app.goo.gl/RKEe8ThenGNTKGvu9"  id="tipNewPlace" target="_blank" class="map-btn ">
+    Get Directions 🚗
+  </a>
 </div>
 
 <!-- FOOTER -->
@@ -2444,6 +2524,8 @@ allQuotes.forEach((text)=>{
 
     document.getElementById("map-re-btn").innerText = "📍 இடத்தை பார்க்க";
     document.getElementById("map-wed-btn").innerText = "📍 இடத்தை பார்க்க";
+    document.getElementById("map-loc-tir-btn").innerText = "📍 நடைபெறும் இடம்";
+
 
 
 
@@ -2474,7 +2556,10 @@ allQuotes.forEach((text)=>{
 
     document.getElementById("appa").innerText = "திரு. P.மணி 🤍 திருமதி. M.கவிதா";
 
-    document.getElementById("amma").innerText = "திரு. R. ரமேஷ் 🤍 திருமதி. R.முத்து பார்வதி ";
+    document.getElementById("amma").innerText = "திரு. R. ரமேஷ் 🤍 திருமதி. R.முத்து பார்வதி";
+
+    document.getElementById("tipNewPlace").innerText = "இடம் பார்க்க";
+
 
 
 
@@ -2649,6 +2734,34 @@ window.addEventListener("scroll", () => {
 
 });
 
+</script>
+<script>
+  // Event Date & Time (IMPORTANT)
+  const eventDate = new Date("2026-05-29T18:30:00");
+
+  // Current Time
+  const now = new Date();
+
+  // Map URLs
+  const templeMap = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d62637.380536381024!2d77.26954!3d11.1255681!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba90656f583addf%3A0x5c8980b7cce2eb8!2sBalamurugan%20Temple!5e0!3m2!1sen!2sin!4v1779035711346!5m2!1sen!2sin";
+
+  const mahalMap = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.8869330644225!2d77.9756718!3d10.350925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00aa55a473ecbd%3A0x6284859c91522fcc!2sSSK%20Vijayalakshmi%20Mahal!5e0!3m2!1sen!2sin!4v1779036430693!5m2!1sen!2sin";
+
+  const templeLink = "https://maps.app.goo.gl/RKEe8ThenGNTKGvu9";
+  const mahalLink = "https://maps.app.goo.gl/"; // replace if you have mahal link
+
+  const iframe = document.getElementById("venueMap");
+  const btn = document.getElementById("tipNewPlace");
+
+  if (now < eventDate) {
+    // BEFORE time → Temple
+    iframe.src = templeMap;
+    btn.href = templeLink;
+  } else {
+    // AFTER time → Mahal
+    iframe.src = mahalMap;
+    btn.href = mahalLink;
+  }
 </script>
 
 </body>
