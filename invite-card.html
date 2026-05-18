@@ -929,6 +929,25 @@ font-family:'Poppins', sans-serif;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 
   transition: all 0.4s ease;
+ animation:
+    zoomBlinks 1.8s infinite ease-in-out;
+}
+
+
+ /* Smooth Zoom Animation */
+@keyframes zoomBlinks{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.05);
+  }
+
+  100%{
+    transform:scale(1);
+  }
 }
 
 /* GOLD BORDER ANIMATION */
