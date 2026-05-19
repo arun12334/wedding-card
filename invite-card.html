@@ -2872,5 +2872,88 @@ window.addEventListener("scroll", () => {
   }
 </script>
 
+ <script>
+
+function getDeviceInfo(){
+
+  let ua = navigator.userAgent;
+
+  let device =
+    /mobile/i.test(ua)
+    ? "Mobile"
+    : "Desktop";
+
+  let browser = "Unknown";
+
+  if(ua.includes("Chrome")){
+    browser = "Chrome";
+  }
+  else if(ua.includes("Firefox")){
+    browser = "Firefox";
+  }
+  else if(ua.includes("Safari")){
+    browser = "Safari";
+  }
+
+  let os = "Unknown";
+
+  if(ua.includes("Android")){
+    os = "Android";
+  }
+  else if(ua.includes("Windows")){
+    os = "Windows";
+  }
+  else if(ua.includes("iPhone")){
+    os = "iPhone";
+  }
+
+  return {
+    device,
+    browser,
+    os
+  };
+}
+
+window.addEventListener("load",()=>{
+
+  let info =
+  getDeviceInfo();
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbzwgQ48PGmDnq1d9C9TjPAQk-nIQ2hSgehv6lf2SKQylhFTY4GWp6hNL1CXnE3mkeE/exec",
+    {
+
+      method:"POST",
+
+      mode:"no-cors",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+
+        name:"Visitor",
+
+        device:info.device,
+
+        browser:info.browser,
+
+        os:info.os,
+
+        page:window.location.href,
+
+        userName:
+        localStorage.getItem("inviteName") || ""
+
+      })
+
+    }
+  );
+
+});
+
+</script>
+
 </body>
 </html>
