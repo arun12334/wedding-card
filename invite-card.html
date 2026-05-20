@@ -2192,6 +2192,11 @@ floatCoin 5s ease-in-out infinite;
 
 }
 
+.invite-sub.tamil-guest{
+
+  padding-top:8px !important;
+
+}
 
 </style>
 
@@ -2431,7 +2436,7 @@ floatCoin 5s ease-in-out infinite;
   <!-- INSIDE CONTENT -->
 <div class="scratch-reveal" id="scratchReveal">
 
-  <div class="invite-icon">💌</div>
+  <!-- <div class="invite-icon">💌</div> -->
 
   <div class="invite-title gold-text">
     <span id="specialText">
@@ -3351,36 +3356,101 @@ premiumCanvas.addEventListener(
 
 </script>
 
-<script>
+ <script>
 
-/* GET NAME FROM LOCAL STORAGE */
-const guestName =
-localStorage.getItem("inviteName");
+window.addEventListener("DOMContentLoaded", () => {
 
-/* ELEMENTS */
-const specialText =
-document.getElementById("specialText");
+  /* GET VALUES */
+  const guestName =
+    localStorage.getItem("inviteName");
 
-const inviteSub =
-document.getElementById("inviteSub");
+  const lang =
+    localStorage.getItem("lang") || "en";
 
-/* IF NAME EXISTS */
-if(
-  guestName &&
-  guestName.trim() !== ""
-){
+  /* ELEMENTS */
+  const specialText =
+    document.getElementById("specialText");
 
+  const inviteSub =
+    document.getElementById("inviteSub");
+
+  /* CHECK ELEMENTS */
+  if(!specialText || !inviteSub){
+    return;
+  }
+
+  /* LANGUAGE TEXT */
+  const inviteTexts = {
+
+    en: {
+
+      title:
+        "This is Special Invitation 💖",
+
+      sub:
+        "Let’s Celebrate Together ✨"
+
+    },
+
+    ta: {
+
+      title:
+        "இது உங்களுக்கான சிறப்பு அழைப்பிதழ் 💖",
+
+      sub:
+        "எங்களுடன் இணைந்து கொண்டாடுங்கள் ✨"
+
+    }
+
+  };
+
+  /* SELECT LANGUAGE */
+  const current =
+    inviteTexts[lang] || inviteTexts.en;
+
+  /* TITLE */
   specialText.innerHTML =
-  `This is Special Invitation 💖`;
+    current.title;
 
- inviteSub.innerHTML = `
-  <span class="invite-guest-name">
-    ${guestName}
-  </span>
+  /* REMOVE OLD CLASS */
+  inviteSub.classList.remove(
+    "tamil-guest"
+  );
 
-   Let’s Celebrate Together ✨
-`;
-}
+  /* WITH GUEST NAME */
+  if(
+    guestName &&
+    guestName.trim() !== ""
+  ){
+
+    inviteSub.innerHTML = `
+      <span class="invite-guest-name">
+        ${guestName}
+      </span>
+
+      ${current.sub}
+    `;
+
+    /* ONLY TAMIL + GUEST */
+    if(lang === "ta"){
+
+      inviteSub.classList.add(
+        "tamil-guest"
+      );
+
+    }
+
+  }
+
+  /* WITHOUT GUEST NAME */
+  else{
+
+    inviteSub.innerHTML =
+      current.sub;
+
+  }
+
+});
 
 </script>
 
